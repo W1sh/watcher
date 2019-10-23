@@ -1,4 +1,4 @@
-package com.w1sh.watcher.ws;
+package com.w1sh.watcher.webservices;
 
 import com.w1sh.watcher.entities.Movie;
 import org.springframework.web.bind.annotation.GetMapping;

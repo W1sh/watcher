@@ -6,13 +6,60 @@
 
     <groupId>com.w1sh</groupId>
     <artifactId>watcher</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>watcher-entities</module>
+        <module>watcher-repositories</module>
+        <module>watcher-services</module>
+        <module>watcher-business</module>
+        <module>watcher-webservices</module>
+        <module>watcher-dto</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.1.3.RELEASE</version>
+            </dependency>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.1.3.RELEASE</version>
-        </dependency>
-    </dependencies>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>2.1.8.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.w1sh</groupId>
+                <artifactId>watcher-business</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.w1sh</groupId>
+                <artifactId>watcher-services</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.w1sh</groupId>
+                <artifactId>watcher-repositories</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.w1sh</groupId>
+                <artifactId>watcher-dto</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.w1sh</groupId>
+                <artifactId>watcher-entities</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
