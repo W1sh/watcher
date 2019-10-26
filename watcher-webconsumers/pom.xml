@@ -9,12 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>watcher-repositories</artifactId>
-    <dependencies>
-        <dependency>
-            <groupId>com.w1sh</groupId>
-            <artifactId>watcher-entities</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>watcher-webconsumers</artifactId>
+
 
 </project>

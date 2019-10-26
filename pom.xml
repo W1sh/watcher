@@ -9,13 +9,19 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>watcher-entities</module>
-        <module>watcher-repositories</module>
         <module>watcher-services</module>
         <module>watcher-business</module>
         <module>watcher-webservices</module>
         <module>watcher-dto</module>
+        <module>watcher-webconsumers</module>
+        <module>watcher-jpa</module>
     </modules>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -44,19 +50,13 @@
             </dependency>
             <dependency>
                 <groupId>com.w1sh</groupId>
-                <artifactId>watcher-repositories</artifactId>
+                <artifactId>watcher-jpa</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.w1sh</groupId>
                 <artifactId>watcher-dto</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.w1sh</groupId>
-                <artifactId>watcher-entities</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <scope>compile</scope>
             </dependency>
