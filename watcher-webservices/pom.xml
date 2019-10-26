@@ -20,6 +20,10 @@
             <groupId>com.w1sh</groupId>
             <artifactId>watcher-business</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.w1sh</groupId>
+            <artifactId>watcher-common</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

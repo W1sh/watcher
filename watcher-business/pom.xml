@@ -17,7 +17,7 @@
         </dependency>
         <dependency>
             <groupId>com.w1sh</groupId>
-            <artifactId>watcher-dto</artifactId>
+            <artifactId>watcher-common</artifactId>
         </dependency>
     </dependencies>
 

@@ -12,7 +12,7 @@
         <module>watcher-services</module>
         <module>watcher-business</module>
         <module>watcher-webservices</module>
-        <module>watcher-dto</module>
+        <module>watcher-common</module>
         <module>watcher-webconsumers</module>
         <module>watcher-jpa</module>
     </modules>
@@ -56,9 +56,20 @@
             </dependency>
             <dependency>
                 <groupId>com.w1sh</groupId>
-                <artifactId>watcher-dto</artifactId>
+                <artifactId>watcher-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.w1sh</groupId>
+                <artifactId>watcher-webconsumers</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>2.3.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
