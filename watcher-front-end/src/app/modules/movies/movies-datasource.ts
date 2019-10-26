@@ -100,6 +100,12 @@ export class MoviesDataSource extends DataSource<MoviesItem> {
       }
     });
   }
+
+  filter(filterValue: string, data: MoviesItem[]) {
+    return data.filter(movie => {
+      movie.name.toLowerCase().includes(filterValue);
+    });
+  }
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */

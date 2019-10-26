@@ -10,22 +10,26 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './modules/navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { HomeComponent } from './home/home.component';
-import { MoviesComponent } from './movies/movies.component';
+import { HomeComponent } from './modules/home/home.component';
+import { MoviesComponent } from './modules/movies/movies.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CloseMenuDirective } from './shared/directives/close-menu.directive';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    MoviesComponent
+    MoviesComponent,
+    CloseMenuDirective
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
