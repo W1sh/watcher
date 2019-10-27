@@ -10,4 +10,8 @@ public class PropertiesConfiguration {
 
     @Value ("${tmdb.key}")
     private String tmdbKey;
+
+    public String getTmdbKey() {
+        return tmdbKey;
+    }
 }

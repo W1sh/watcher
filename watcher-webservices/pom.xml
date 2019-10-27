@@ -24,6 +24,10 @@
             <groupId>com.w1sh</groupId>
             <artifactId>watcher-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.w1sh</groupId>
+            <artifactId>watcher-webconsumers</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
