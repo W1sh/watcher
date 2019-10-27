@@ -16,6 +16,6 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieDTO findByTitle(String title) {
-        return movieConsumer.findByTitle(title);
+        return movieConsumer.findByTitle(title).get(0);
     }
 }

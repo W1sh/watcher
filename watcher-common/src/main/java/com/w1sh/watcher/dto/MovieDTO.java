@@ -1,17 +1,39 @@
 package com.w1sh.watcher.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
+@JsonIgnoreProperties (value = { "video", "adult", "backdrop_path", "original_language", "title"})
 public class MovieDTO {
 
+    @JsonProperty(value = "original_title")
     private String originalTitle;
+
     private String overview;
+
     private Integer id;
-    private Integer popularity;
+
+    private Double popularity;
+
+    @JsonProperty(value = "poster_path")
     private String posterPath;
+
+    @JsonProperty(value = "genre_ids")
     private List<Integer> genres;
+
+    @JsonProperty(value = "release_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date releaseDate;
+
+    @JsonProperty(value = "vote_count")
+    private Integer voteCount;
+
+    @JsonProperty(value = "vote_average")
+    private Double averageVote;
 
     public String getOriginalTitle() {
         return originalTitle;
@@ -37,11 +59,11 @@ public class MovieDTO {
         this.id = id;
     }
 
-    public Integer getPopularity() {
+    public Double getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(Integer popularity) {
+    public void setPopularity(Double popularity) {
         this.popularity = popularity;
     }
 
@@ -67,5 +89,13 @@ public class MovieDTO {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public Double getAverageVote() {
+        return averageVote;
+    }
+
+    public void setAverageVote(Double averageVote) {
+        this.averageVote = averageVote;
     }
 }

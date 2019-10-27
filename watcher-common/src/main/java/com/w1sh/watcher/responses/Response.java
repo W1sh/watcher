@@ -6,13 +6,12 @@ import java.util.List;
 
 public class Response<T> {
 
-    @JsonProperty(value = "page")
     private Integer page;
     @JsonProperty(value = "total_pages")
     private Integer totalPages;
     @JsonProperty(value = "total_results")
     private Integer totalResults;
-    @JsonProperty(value = "results")
+
     private List<T> results;
 
     public Integer getPage() {

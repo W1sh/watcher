@@ -1,43 +1,37 @@
 package com.w1sh.watcher.consumers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.w1sh.watcher.HttpClientConnection;
-import com.w1sh.watcher.deserializers.MovieDTODeserializer;
+import com.w1sh.watcher.TmdbConnection;
 import com.w1sh.watcher.dto.MovieDTO;
 import com.w1sh.watcher.responses.Response;
-import org.springframework.boot.json.JacksonJsonParser;
-import org.springframework.boot.json.JsonParser;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class MovieConsumer {
 
-    private final HttpClientConnection connection;
+    private final TmdbConnection connection;
+    private final ObjectMapper objectMapper;
 
-    public MovieConsumer(HttpClientConnection connection) {
+    public MovieConsumer(TmdbConnection connection, ObjectMapper objectMapper) {
         this.connection = connection;
+        this.objectMapper = objectMapper;
     }
 
-    public MovieDTO findByTitle(String title){
-        String json = connection.get(HttpClientConnection.TMDB_SEARCH_MOVIE);
+    public List<MovieDTO> findByTitle(String title){
+        String json = connection.searchMoviesByTitle(title);
 
-        ObjectMapper mapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(MovieDTO.class, new MovieDTODeserializer());
-        mapper.registerModule(module);
-
-        Response<MovieDTO> movieDTOResponse = null;
         try {
-            movieDTOResponse = mapper.readValue(json, new TypeReference<Response<MovieDTO>>() {});
+            Response<MovieDTO> movieDTOResponse = objectMapper.readValue(
+                    json, new TypeReference<Response<MovieDTO>>() {});
+            return movieDTOResponse.getResults();
         } catch (IOException e) {
             e.printStackTrace();
+            return new ArrayList<>();
         }
-
-        return movieDTOResponse.getResults().get(0);
     }
 }
