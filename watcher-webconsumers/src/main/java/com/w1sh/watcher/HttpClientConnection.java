@@ -1,7 +1,6 @@
 package com.w1sh.watcher;
 
 import com.w1sh.watcher.utils.PropertiesConfiguration;
-import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -18,20 +17,20 @@ import java.time.Duration;
 public class HttpClientConnection {
 
     private final Logger logger = LoggerFactory.getLogger(HttpClientConnection.class);
-    private final ModelMapper modelMapper;
     private final PropertiesConfiguration propertiesConfiguration;
     private final HttpClient client;
+    private final RateLimiter rateLimiter;
 
     public static final String TMDB_SEARCH_MOVIE =
             "https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false&query=Marvel";
 
-    public HttpClientConnection(ModelMapper modelMapper, PropertiesConfiguration propertiesConfiguration) {
-        this.modelMapper = modelMapper;
+    public HttpClientConnection(PropertiesConfiguration propertiesConfiguration, RateLimiter rateLimiter) {
         this.propertiesConfiguration = propertiesConfiguration;
+        this.rateLimiter = rateLimiter;
 
         this.client = HttpClient.newBuilder()
-                .version(HttpClient.Version.HTTP_2) // default
-                .followRedirects(HttpClient.Redirect.NORMAL) // Always redirect, except from HTTPS URLs to HTTP URLs.
+                .version(HttpClient.Version.HTTP_2)
+                .followRedirects(HttpClient.Redirect.NORMAL)
                 .proxy(ProxySelector.getDefault())
                 .build();
     }
@@ -48,11 +47,11 @@ public class HttpClientConnection {
         try {
             var response = this.client.send(requestMovies, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 200 || response.statusCode() == 201){
-                logger.info("Success!");
-                System.out.println(response.body());
-                logger.info("Requests remaining: {}", response.headers().firstValue("X-RateLimit-Remaining").orElseThrow());
+                rateLimiter.success(response.headers());
+                return response.body();
             } else {
-                logger.error("Failed to retrieve response. Status: " + response.statusCode());
+                logger.error("Failed to retrieve response. Status: {}", response.statusCode());
+                rateLimiter.failed(response.headers());
             }
         } catch (IOException e) {
             logger.error("", e);

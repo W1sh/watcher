@@ -1,4 +1,8 @@
 package com.w1sh.watcher.services;
 
-public class MovieService {
+import com.w1sh.watcher.dto.MovieDTO;
+
+public interface MovieService {
+
+    MovieDTO findByTitle(String title);
 }

@@ -12,8 +12,20 @@
     <artifactId>watcher-services</artifactId>
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.w1sh</groupId>
             <artifactId>watcher-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.w1sh</groupId>
+            <artifactId>watcher-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.w1sh</groupId>
+            <artifactId>watcher-webconsumers</artifactId>
         </dependency>
     </dependencies>
 
