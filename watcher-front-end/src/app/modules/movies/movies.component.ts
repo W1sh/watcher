@@ -27,8 +27,4 @@ export class MoviesComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter(filterValue, this.dataSource.data)
-  }
 }

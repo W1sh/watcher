@@ -1,11 +1,6 @@
 <mat-card>
 <div class="mat-elevation-z8">
-  <mat-form-field>
-    <label>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </label>
-  </mat-form-field>
-
+  
   <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- Id Column -->
     <ng-container matColumnDef="id">

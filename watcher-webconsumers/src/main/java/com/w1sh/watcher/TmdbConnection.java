@@ -20,8 +20,10 @@ public class TmdbConnection {
 
     public static final String TMDB_SEARCH_MOVIE =
             "https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false&query=";
-    public static final String TMDB_GENRES_LIST =
+    public static final String TMDB_MOVIES_GENRES_LIST =
             "https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US";
+    public static final String TMDB_TV_GENRES_LIST =
+            "https://api.themoviedb.org/3/genre/tv/list?api_key=<<api_key>>&language=en-US";
 
     public TmdbConnection(PropertiesConfiguration propertiesConfiguration, RateLimiter rateLimiter,
                           HttpClientConnection connection) {
@@ -36,8 +38,13 @@ public class TmdbConnection {
         return request(requestUrl);
     }
 
-    public String getAllGenres(){
-        String requestUrl = TMDB_GENRES_LIST.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
+    public String getAllMovieGenres(){
+        String requestUrl = TMDB_MOVIES_GENRES_LIST.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
+        return request(requestUrl);
+    }
+
+    public String getAllTVGenres(){
+        String requestUrl = TMDB_TV_GENRES_LIST.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
         return request(requestUrl);
     }
 

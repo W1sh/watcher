@@ -11,7 +11,7 @@ import java.util.List;
 public class MovieDTO {
 
     @JsonProperty(value = "original_title")
-    private String originalTitle;
+    private String title;
 
     private String overview;
 
@@ -35,12 +35,12 @@ public class MovieDTO {
     @JsonProperty(value = "vote_average")
     private Double averageVote;
 
-    public String getOriginalTitle() {
-        return originalTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getOverview() {
