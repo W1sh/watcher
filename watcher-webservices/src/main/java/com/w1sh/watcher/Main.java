@@ -1,4 +1,4 @@
-package com.w1sh.watcher.webservices;
+package com.w1sh.watcher;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

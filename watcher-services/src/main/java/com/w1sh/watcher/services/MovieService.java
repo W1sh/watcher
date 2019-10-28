@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface MovieService {
 
+    List<MovieDTO> findAll();
+
     List<MovieDTO> findByTitle(String title);
+
+    MovieDTO findById(Integer id);
 }

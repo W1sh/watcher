@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -28,6 +29,20 @@ public class MovieServiceImpl implements MovieService {
         this.genreConsumer = genreConsumer;
         this.modelMapper = modelMapper;
         this.movieRepository = movieRepository;
+    }
+
+    @Override
+    public List<MovieDTO> findAll() {
+        List<Movie> movies = movieRepository.findAll();
+        return movies.stream()
+                .map(movie -> modelMapper.map(movie, MovieDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public MovieDTO findById(Integer id) {
+        Movie movie = movieRepository.findById(id).orElseThrow();
+        return modelMapper.map(movie, MovieDTO.class);
     }
 
     @Override

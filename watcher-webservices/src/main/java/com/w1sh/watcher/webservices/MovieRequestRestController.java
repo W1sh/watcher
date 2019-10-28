@@ -8,22 +8,17 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/movies")
-public class MovieController {
+@RequestMapping ("/movies/search")
+public class MovieRequestRestController {
 
-   private final MovieService movieService;
+    private final MovieService movieService;
 
-    public MovieController(MovieService movieService) {
+    public MovieRequestRestController(MovieService movieService) {
         this.movieService = movieService;
     }
 
-    @GetMapping("/{title}")
+    @GetMapping ("/{title}")
     public List<MovieDTO> findAll(@PathVariable String title){
         return movieService.findByTitle(title);
-    }
-
-    @GetMapping("/{title}/single")
-    public MovieDTO findOne(@PathVariable String title){
-        return movieService.findByTitle(title).get(0);
     }
 }
