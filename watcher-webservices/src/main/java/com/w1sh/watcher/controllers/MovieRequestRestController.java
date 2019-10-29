@@ -1,4 +1,4 @@
-package com.w1sh.watcher.webservices;
+package com.w1sh.watcher.controllers;
 
 import com.w1sh.watcher.dto.MovieDTO;
 import com.w1sh.watcher.services.MovieService;

@@ -2,7 +2,7 @@ package com.w1sh.watcher.consumers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.w1sh.watcher.TmdbConnection;
-import com.w1sh.watcher.entities.Genre;
+import com.w1sh.watcher.dto.GenreDTO;
 import com.w1sh.watcher.responses.GenreResponse;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +21,7 @@ public class GenreConsumer {
         this.objectMapper = objectMapper;
     }
 
-    public List<Genre> getAllMovieGenres(){
+    public List<GenreDTO> getAllMovieGenres(){
         String json = connection.getAllMovieGenres();
 
         try {
@@ -32,7 +32,7 @@ public class GenreConsumer {
         }
     }
 
-    public List<Genre> getAllTVGenres(){
+    public List<GenreDTO> getAllTVGenres(){
         String json = connection.getAllTVGenres();
 
         try {
