@@ -1,6 +1,6 @@
 package com.w1sh.watcher.services;
 
-import com.w1sh.watcher.dto.GenreDTO;
+import com.w1sh.watcher.dtos.GenreDTO;
 
 import java.util.List;
 
@@ -11,6 +11,4 @@ public interface GenreService {
     void saveAll(List<GenreDTO> genreDTOs);
 
     Boolean exists(GenreDTO genreDTO);
-
-    List<GenreDTO> fetchGenres();
 }

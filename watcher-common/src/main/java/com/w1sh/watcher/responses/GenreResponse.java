@@ -1,6 +1,6 @@
 package com.w1sh.watcher.responses;
 
-import com.w1sh.watcher.dto.GenreDTO;
+import com.w1sh.watcher.dtos.GenreDTO;
 
 import java.util.List;
 

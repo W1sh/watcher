@@ -1,9 +1,9 @@
-package com.w1sh.watcher.consumers;
+package com.w1sh.watcher.clients;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.w1sh.watcher.TmdbConnection;
-import com.w1sh.watcher.dto.MovieDTO;
+import com.w1sh.watcher.connections.TmdbConnection;
+import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.responses.Response;
 import org.springframework.stereotype.Component;
 

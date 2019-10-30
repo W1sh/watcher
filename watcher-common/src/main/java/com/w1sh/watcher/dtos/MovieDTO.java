@@ -1,4 +1,4 @@
-package com.w1sh.watcher.dto;
+package com.w1sh.watcher.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

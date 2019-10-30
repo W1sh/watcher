@@ -1,4 +1,4 @@
-package com.w1sh.watcher.utils;
+package com.w1sh.watcher.configurations;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;

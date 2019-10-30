@@ -1,6 +1,6 @@
 package com.w1sh.watcher.controllers;
 
-import com.w1sh.watcher.dto.GenreDTO;
+import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.services.GenreService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

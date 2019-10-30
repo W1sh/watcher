@@ -1,6 +1,7 @@
-package com.w1sh.watcher;
+package com.w1sh.watcher.connections;
 
-import com.w1sh.watcher.utils.PropertiesConfiguration;
+import com.w1sh.watcher.clients.common.RateLimiter;
+import com.w1sh.watcher.configurations.PropertiesConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

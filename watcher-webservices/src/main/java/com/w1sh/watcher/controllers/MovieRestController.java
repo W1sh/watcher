@@ -1,6 +1,6 @@
 package com.w1sh.watcher.controllers;
 
-import com.w1sh.watcher.dto.MovieDTO;
+import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.services.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.w1sh.watcher.utils;
+package com.w1sh.watcher.configurations;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

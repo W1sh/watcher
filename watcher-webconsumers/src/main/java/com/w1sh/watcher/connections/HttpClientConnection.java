@@ -1,4 +1,4 @@
-package com.w1sh.watcher;
+package com.w1sh.watcher.connections;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

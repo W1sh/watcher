@@ -1,7 +1,7 @@
 package com.w1sh.watcher.services.impl;
 
-import com.w1sh.watcher.consumers.GenreConsumer;
-import com.w1sh.watcher.dto.GenreDTO;
+import com.w1sh.watcher.clients.GenreConsumer;
+import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.entities.Genre;
 import com.w1sh.watcher.repos.GenreRepository;
 import com.w1sh.watcher.services.GenreService;
@@ -57,14 +57,6 @@ public class GenreServiceImpl implements GenreService {
     }
 
     @Override
-    public List<GenreDTO> fetchGenres() {
-        logger.info("Fetching all genres from TMDb API");
-        List<GenreDTO> movieGenres = genreConsumer.getAllMovieGenres();
-        List<GenreDTO> tvGenres = genreConsumer.getAllTVGenres();
-        return Stream.of(movieGenres, tvGenres).flatMap(Collection::stream).collect(Collectors.toList());
-    }
-
-    @Override
     @Transactional(Transactional.TxType.NEVER)
     public List<GenreDTO> findAll() {
         /*List<GenreDTO> genreDTOs = fetchGenres();
@@ -75,5 +67,12 @@ public class GenreServiceImpl implements GenreService {
         return genres.stream()
                 .map(genre -> modelMapper.map(genre, GenreDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    public List<GenreDTO> fetchGenres() {
+        logger.info("Fetching all genres from TMDb API");
+        List<GenreDTO> movieGenres = genreConsumer.getAllMovieGenres();
+        List<GenreDTO> tvGenres = genreConsumer.getAllTVGenres();
+        return Stream.of(movieGenres, tvGenres).flatMap(Collection::stream).collect(Collectors.toList());
     }
 }

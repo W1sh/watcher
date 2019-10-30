@@ -1,7 +1,7 @@
 package com.w1sh.watcher.services.impl;
 
-import com.w1sh.watcher.consumers.MovieConsumer;
-import com.w1sh.watcher.dto.MovieDTO;
+import com.w1sh.watcher.clients.MovieConsumer;
+import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.entities.Movie;
 import com.w1sh.watcher.repos.MovieRepository;
 import com.w1sh.watcher.services.MovieService;

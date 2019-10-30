@@ -18,10 +18,6 @@
         </dependency>
         <dependency>
             <groupId>com.w1sh</groupId>
-            <artifactId>watcher-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.w1sh</groupId>
             <artifactId>watcher-services</artifactId>
         </dependency>
     </dependencies>
