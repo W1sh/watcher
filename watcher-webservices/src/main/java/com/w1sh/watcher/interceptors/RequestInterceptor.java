@@ -15,6 +15,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) {
+        if (request.getRequestURI().equals("/error")) return false;
         long start = System.currentTimeMillis();
         logger.info("Received request from origin {} ", request.getAttribute("origin"));
         request.setAttribute("startTime", start);

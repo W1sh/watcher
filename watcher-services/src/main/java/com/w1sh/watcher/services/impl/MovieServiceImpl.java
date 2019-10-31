@@ -32,6 +32,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional(Transactional.TxType.NEVER)
     public List<MovieDTO> findAll() {
         logger.info("Retrieving all movies from database");
         List<Movie> movies = movieRepository.findAll();
@@ -41,6 +42,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional(Transactional.TxType.NEVER)
     public MovieDTO findById(Integer id) {
         logger.info("Retrieving movie with id {}", id);
         Movie movie = movieRepository.findById(id).orElseThrow();

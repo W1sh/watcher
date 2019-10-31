@@ -61,7 +61,7 @@ public class GenreServiceImpl implements GenreService {
     public List<GenreDTO> findAll() {
         /*List<GenreDTO> genreDTOs = fetchGenres();
         saveAll(genreDTOs);*/
-        logger.info("Retrieving all genres");
+        logger.info("Retrieving all genres from database");
         List<Genre> genres = genreRepository.findAll();
         logger.info("Found {} genres", genres);
         return genres.stream()
