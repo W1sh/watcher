@@ -1,6 +1,5 @@
 package com.w1sh.watcher.services.impl;
 
-import com.w1sh.watcher.clients.GenreConsumer;
 import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.entities.Genre;
 import com.w1sh.watcher.repos.GenreRepository;
@@ -13,24 +12,18 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class GenreServiceImpl implements GenreService {
 
     private static final Logger logger = LoggerFactory.getLogger(GenreServiceImpl.class);
-
-    private final GenreConsumer genreConsumer;
     private final GenreRepository genreRepository;
     private final ModelMapper modelMapper;
 
-    public GenreServiceImpl(GenreConsumer genreConsumer, GenreRepository genreRepository,
-                            ModelMapper modelMapper) {
-        this.genreConsumer = genreConsumer;
+    public GenreServiceImpl(GenreRepository genreRepository, ModelMapper modelMapper) {
         this.genreRepository = genreRepository;
         this.modelMapper = modelMapper;
     }
@@ -59,8 +52,6 @@ public class GenreServiceImpl implements GenreService {
     @Override
     @Transactional(Transactional.TxType.NEVER)
     public List<GenreDTO> findAll() {
-        /*List<GenreDTO> genreDTOs = fetchGenres();
-        saveAll(genreDTOs);*/
         logger.info("Retrieving all genres from database");
         List<Genre> genres = genreRepository.findAll();
         logger.info("Found {} genres", genres);
