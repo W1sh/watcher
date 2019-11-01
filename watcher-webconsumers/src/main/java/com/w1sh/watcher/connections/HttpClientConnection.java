@@ -27,7 +27,7 @@ public class HttpClientConnection {
     }
 
     public HttpResponse get(String url) throws IOException, InterruptedException {
-        logger.info("Building request...");
+        logger.info("Creating http request...");
         var requestMovies = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .timeout(Duration.ofSeconds(3))

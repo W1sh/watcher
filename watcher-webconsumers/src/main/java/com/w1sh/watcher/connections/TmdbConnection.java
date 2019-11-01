@@ -34,17 +34,20 @@ public class TmdbConnection {
     }
 
     public String searchMoviesByTitle(String title){
+        logger.info("Preparing to query TMDb API for movies with title containing \"{}\"", title);
         String requestUrl = TMDB_SEARCH_MOVIE.replace("<<api_key>>", propertiesConfiguration.getTmdbKey())
                 .concat(title);
         return request(requestUrl);
     }
 
     public String getAllMovieGenres(){
+        logger.info("Preparing to query TMDb API for all movie genres");
         String requestUrl = TMDB_MOVIES_GENRES_LIST.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
         return request(requestUrl);
     }
 
     public String getAllTVGenres(){
+        logger.info("Preparing to query TMDb API for all TV genres");
         String requestUrl = TMDB_TV_GENRES_LIST.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
         return request(requestUrl);
     }
