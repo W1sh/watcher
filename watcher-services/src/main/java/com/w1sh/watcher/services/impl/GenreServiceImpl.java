@@ -68,11 +68,4 @@ public class GenreServiceImpl implements GenreService {
                 .map(genre -> modelMapper.map(genre, GenreDTO.class))
                 .collect(Collectors.toList());
     }
-
-    public List<GenreDTO> fetchGenres() {
-        logger.info("Fetching all genres from TMDb API");
-        List<GenreDTO> movieGenres = genreConsumer.getAllMovieGenres();
-        List<GenreDTO> tvGenres = genreConsumer.getAllTVGenres();
-        return Stream.of(movieGenres, tvGenres).flatMap(Collection::stream).collect(Collectors.toList());
-    }
 }

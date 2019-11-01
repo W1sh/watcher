@@ -14,12 +14,12 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/movies")
-public class MovieRestController {
+public class MovieController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MovieRestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
     private final MovieService movieService;
 
-    public MovieRestController(MovieService movieService) {
+    public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
 

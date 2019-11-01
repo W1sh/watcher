@@ -12,12 +12,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping ("/search/movies")
-public class MovieRequestRestController {
+public class MovieRequestController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MovieRequestRestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(MovieRequestController.class);
     private final MovieRequestService movieRequestService;
 
-    public MovieRequestRestController(MovieRequestService movieRequestService) {
+    public MovieRequestController(MovieRequestService movieRequestService) {
         this.movieRequestService = movieRequestService;
     }
 

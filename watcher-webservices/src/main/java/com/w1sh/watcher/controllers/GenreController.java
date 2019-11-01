@@ -14,12 +14,12 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping ("/genres")
-public class GenreRestController {
+public class GenreController {
 
-    private static final Logger logger = LoggerFactory.getLogger(GenreRestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(GenreController.class);
     private final GenreService genreService;
 
-    public GenreRestController(GenreService genreService) {
+    public GenreController(GenreService genreService) {
         this.genreService = genreService;
     }
 
