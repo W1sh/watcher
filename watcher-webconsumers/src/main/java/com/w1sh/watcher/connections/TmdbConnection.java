@@ -31,6 +31,8 @@ public class TmdbConnection {
             "https://api.themoviedb.org/3/movie/now_playing?api_key=<<api_key>>&language=en-US&page=1";
     public static final String TMDB_TOPRATED_MOVIES =
             "https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1";
+    public static final String TMDB_UPCOMING_MOVIES =
+            "https://api.themoviedb.org/3/movie/upcoming?api_key=<<api_key>>&language=en-US&page=1";
 
     public TmdbConnection(PropertiesConfiguration propertiesConfiguration, RateLimiter rateLimiter,
                           HttpClientConnection connection) {
@@ -53,7 +55,13 @@ public class TmdbConnection {
 
     public String searchTopRatedMovies(){
         logger.info("Preparing to query TMDb API for top rated movies");
-        String requestUrl = TMDB_NOWPLAYING_MOVIES.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
+        String requestUrl = TMDB_TOPRATED_MOVIES.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
+        return request(requestUrl);
+    }
+
+    public String searchUpcomingMovies(){
+        logger.info("Preparing to query TMDb API for upcoming movies");
+        String requestUrl = TMDB_UPCOMING_MOVIES.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
         return request(requestUrl);
     }
 

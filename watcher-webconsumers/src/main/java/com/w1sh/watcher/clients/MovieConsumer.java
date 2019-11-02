@@ -38,7 +38,8 @@ public class MovieConsumer {
     }
 
     public List<MovieDTO> findUpcoming(){
-        return new ArrayList<>();
+        String json = connection.searchUpcomingMovies();
+        return parse(json);
     }
 
     public List<MovieDTO> findByTitle(String title){
