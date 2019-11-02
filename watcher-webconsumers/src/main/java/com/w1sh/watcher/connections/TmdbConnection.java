@@ -27,6 +27,8 @@ public class TmdbConnection {
             "https://api.themoviedb.org/3/genre/tv/list?api_key=<<api_key>>&language=en-US";
     public static final String TMDB_POPULAR_MOVIES =
             "https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1";
+    public static final String TMDB_NOWPLAYING_MOVIES =
+            "https://api.themoviedb.org/3/movie/now_playing?api_key=<<api_key>>&language=en-US&page=1";
 
     public TmdbConnection(PropertiesConfiguration propertiesConfiguration, RateLimiter rateLimiter,
                           HttpClientConnection connection) {
@@ -38,6 +40,12 @@ public class TmdbConnection {
     public String searchPopularMovies(){
         logger.info("Preparing to query TMDb API for popular movies");
         String requestUrl = TMDB_POPULAR_MOVIES.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
+        return request(requestUrl);
+    }
+
+    public String searchNowPlayingMovies(){
+        logger.info("Preparing to query TMDb API for now playing movies");
+        String requestUrl = TMDB_NOWPLAYING_MOVIES.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
         return request(requestUrl);
     }
 
