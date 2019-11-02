@@ -25,12 +25,20 @@ public class TmdbConnection {
             "https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US";
     public static final String TMDB_TV_GENRES_LIST =
             "https://api.themoviedb.org/3/genre/tv/list?api_key=<<api_key>>&language=en-US";
+    public static final String TMDB_POPULAR_MOVIES =
+            "https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1";
 
     public TmdbConnection(PropertiesConfiguration propertiesConfiguration, RateLimiter rateLimiter,
                           HttpClientConnection connection) {
         this.propertiesConfiguration = propertiesConfiguration;
         this.rateLimiter = rateLimiter;
         this.connection = connection;
+    }
+
+    public String searchPopularMovies(){
+        logger.info("Preparing to query TMDb API for popular movies");
+        String requestUrl = TMDB_POPULAR_MOVIES.replace("<<api_key>>", propertiesConfiguration.getTmdbKey());
+        return request(requestUrl);
     }
 
     public String searchMoviesByTitle(String title){

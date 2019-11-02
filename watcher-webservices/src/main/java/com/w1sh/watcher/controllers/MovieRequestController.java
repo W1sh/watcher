@@ -1,5 +1,6 @@
 package com.w1sh.watcher.controllers;
 
+import com.w1sh.watcher.Indexation;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.dtos.QueryParamsDTO;
 import com.w1sh.watcher.services.MovieRequestService;
@@ -19,6 +20,13 @@ public class MovieRequestController {
 
     public MovieRequestController(MovieRequestService movieRequestService) {
         this.movieRequestService = movieRequestService;
+    }
+
+    @GetMapping("/{indexation}")
+    public List<MovieDTO> findAll(@PathVariable String indexation){
+        logger.info("Received request to search movies in TMDb API with index type {}", indexation);
+        Indexation index = Indexation.fromString(indexation);
+        return movieRequestService.findAll(index);
     }
 
     @GetMapping

@@ -33,7 +33,7 @@ public class MovieDTO {
     private Integer voteCount;
 
     @JsonProperty(value = "vote_average")
-    private Double averageVote;
+    private Double voteAverage;
 
     public String getTitle() {
         return title;
@@ -91,11 +91,11 @@ public class MovieDTO {
         this.releaseDate = releaseDate;
     }
 
-    public Double getAverageVote() {
-        return averageVote;
+    public Double getVoteAverage() {
+        return voteAverage;
     }
 
-    public void setAverageVote(Double averageVote) {
-        this.averageVote = averageVote;
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
     }
 }

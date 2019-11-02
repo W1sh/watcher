@@ -1,5 +1,6 @@
 package com.w1sh.watcher.services.impl;
 
+import com.w1sh.watcher.Indexation;
 import com.w1sh.watcher.clients.MovieConsumer;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.dtos.QueryParamsDTO;
@@ -20,5 +21,16 @@ public class MovieRequestServiceImpl implements MovieRequestService {
     @Override
     public List<MovieDTO> findAll(QueryParamsDTO queryParamsDTO) {
         return movieConsumer.findByTitle(queryParamsDTO.getSearch());
+    }
+
+    @Override
+    public List<MovieDTO> findAll(Indexation indexation) {
+        switch (indexation){
+            case POPULAR: return movieConsumer.findPopular();
+            case TOPRATED: return movieConsumer.findTopRated();
+            case UPCOMING: return movieConsumer.findUpcoming();
+            case NOWPLAYING: return movieConsumer.findNowPlaying();
+            default: throw new IllegalArgumentException("Indexation not supported");
+        }
     }
 }

@@ -22,9 +22,29 @@ public class MovieConsumer {
         this.objectMapper = objectMapper;
     }
 
+    public List<MovieDTO> findPopular(){
+        String json = connection.searchPopularMovies();
+        return parse(json);
+    }
+
+    public List<MovieDTO> findNowPlaying(){
+        return new ArrayList<>();
+    }
+
+    public List<MovieDTO> findTopRated(){
+        return new ArrayList<>();
+    }
+
+    public List<MovieDTO> findUpcoming(){
+        return new ArrayList<>();
+    }
+
     public List<MovieDTO> findByTitle(String title){
         String json = connection.searchMoviesByTitle(title);
+        return parse(json);
+    }
 
+    private List<MovieDTO> parse(String json) {
         try {
             Response<MovieDTO> movieDTOResponse = objectMapper.readValue(
                     json, new TypeReference<Response<MovieDTO>>() {});
