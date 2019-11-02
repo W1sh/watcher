@@ -22,6 +22,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MovieService} from "./core/services/movie.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -48,9 +50,10 @@ import {MatInputModule} from "@angular/material/input";
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

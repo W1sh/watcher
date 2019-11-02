@@ -2,10 +2,35 @@
   width: 100%;
 }
 
+.flex-form {
+  margin: 2%;
+  display: flex;
+  justify-items: flex-start;
+}
+
+.full-width-input {
+  margin-top: 2%;
+  width: 50%;
+}
+
 mat-card {
   height: 100%;
 }
 
 th.mat-sort-header-sorted {
   color: black;
+}
+
+.mat-column-title {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 50% !important;
+  width: 50% !important;
+  overflow-wrap: break-word;
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }

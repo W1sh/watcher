@@ -35,7 +35,7 @@ const EXAMPLE_DATA: MoviesItem[] = [
 ];
 
 /**
- * Data source for the Movies view. This class should
+ * Data source for the Movie view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
