@@ -31,7 +31,7 @@ import {HttpClientModule} from "@angular/common/http";
     NavigationComponent,
     HomeComponent,
     MoviesComponent,
-    CloseMenuDirective
+    CloseMenuDirective,
   ],
   imports: [
     BrowserModule,
