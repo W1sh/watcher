@@ -12,6 +12,7 @@ export class MovieService {
 
   private searchMovies = 'http://localhost:8080/search/movies';
   private searchPopularMovies = 'http://localhost:8080/search/movies/popular';
+  private searchUpcomingMovies = 'http://localhost:8080/search/movies/upcoming';
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,14 @@ export class MovieService {
       .pipe(
         tap(_ => console.log('fetched popular movies', _)),
         catchError(this.handleError<Movie[]>('getPopular', []))
+      );
+  }
+
+  getUpcoming(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.searchUpcomingMovies, {})
+      .pipe(
+        tap(_ => console.log('fetched upcoming movies', _)),
+        catchError(this.handleError<Movie[]>('getUpcoming', []))
       );
   }
 

@@ -7,11 +7,18 @@ import {Subscription} from "rxjs";
 export class EventEmitterService {
 
   invokeSearchPopular = new EventEmitter();
-  subscription: Subscription;
+  popularSubscription: Subscription;
+
+  invokeSearchUpcoming = new EventEmitter();
+  upcomingSubscription: Subscription;
 
   constructor() { }
 
   onSearchPopular() {
     this.invokeSearchPopular.emit();
+  }
+
+  onSearchUpcoming() {
+    this.invokeSearchUpcoming.emit();
   }
 }

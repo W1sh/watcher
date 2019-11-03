@@ -43,17 +43,32 @@ export class MoviesComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     });
-    if(this.eventEmitterService.subscription == undefined){
-      this.eventEmitterService.subscription = this.eventEmitterService.invokeSearchPopular.subscribe(
-        (name: string) => {
+    if(this.eventEmitterService.popularSubscription == undefined){
+      this.eventEmitterService.popularSubscription = this.eventEmitterService.invokeSearchPopular.subscribe(
+        () => {
         this.searchPopular();
       });
+    }
+    if(this.eventEmitterService.upcomingSubscription == undefined){
+      this.eventEmitterService.upcomingSubscription = this.eventEmitterService.invokeSearchUpcoming.subscribe(
+        () => {
+          this.searchUpcoming();
+        });
     }
     this.changeDetectorRefs.detectChanges();
   }
 
   searchPopular(){
     this.movieService.getPopular().subscribe(movies => {
+      this.data = movies;
+      this.dataSource.data = this.data;
+      this.dataSource.paginator = this.paginator;
+      this.changeDetectorRefs.detectChanges();
+    })
+  }
+
+  searchUpcoming(){
+    this.movieService.getUpcoming().subscribe(movies => {
       this.data = movies;
       this.dataSource.data = this.data;
       this.dataSource.paginator = this.paginator;

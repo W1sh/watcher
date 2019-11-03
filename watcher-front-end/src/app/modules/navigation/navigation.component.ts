@@ -33,7 +33,7 @@ export class NavigationComponent {
   }
 
   searchUpcoming() {
-
+    this.eventEmitterService.onSearchUpcoming();
   }
 
   searchNowPlaying() {
