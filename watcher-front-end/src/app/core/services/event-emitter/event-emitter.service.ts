@@ -1,24 +1,15 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventEmitterService {
 
-  invokeSearchPopular = new EventEmitter();
-  popularSubscription: Subscription;
-
-  invokeSearchUpcoming = new EventEmitter();
-  upcomingSubscription: Subscription;
+  invoker = new EventEmitter();
 
   constructor() { }
 
-  onSearchPopular() {
-    this.invokeSearchPopular.emit();
-  }
-
-  onSearchUpcoming() {
-    this.invokeSearchUpcoming.emit();
+  emit(value: string) {
+    this.invoker.emit(value);
   }
 }

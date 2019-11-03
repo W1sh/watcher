@@ -5,6 +5,7 @@ import {MatSort} from "@angular/material/sort";
 import {Movie} from "../../shared/models/movie";
 import {MovieService} from "../../core/services/movie/movie.service";
 import {EventEmitterService} from "../../core/services/event-emitter/event-emitter.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-movies',
@@ -16,6 +17,7 @@ export class MoviesComponent implements OnInit {
   data: Movie[];
   displayedColumns: string[] = ['title', 'popularity', 'releaseDate', 'voteCount', 'voteAverage'];
   dataSource: MatTableDataSource<Movie>;
+  subscription: Subscription;
 
   constructor(private movieService: MovieService, private eventEmitterService: EventEmitterService,
               private changeDetectorRefs: ChangeDetectorRef) { }
@@ -43,36 +45,51 @@ export class MoviesComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }
     });
-    if(this.eventEmitterService.popularSubscription == undefined){
-      this.eventEmitterService.popularSubscription = this.eventEmitterService.invokeSearchPopular.subscribe(
-        () => {
-        this.searchPopular();
-      });
-    }
-    if(this.eventEmitterService.upcomingSubscription == undefined){
-      this.eventEmitterService.upcomingSubscription = this.eventEmitterService.invokeSearchUpcoming.subscribe(
-        () => {
-          this.searchUpcoming();
+    if(this.subscription == undefined){
+      this.subscription = this.eventEmitterService.invoker.subscribe(
+        (type: string) => {
+          switch (type) {
+            case "popular": this.searchPopular();
+              break;
+            case "upcoming": this.searchUpcoming();
+              break;
+            case "toprated": this.searchTopRated();
+              break;
+            case "nowplaying": this.searchNowPlaying();
+              break;
+          }
         });
     }
-    this.changeDetectorRefs.detectChanges();
   }
 
   searchPopular(){
     this.movieService.getPopular().subscribe(movies => {
-      this.data = movies;
-      this.dataSource.data = this.data;
-      this.dataSource.paginator = this.paginator;
-      this.changeDetectorRefs.detectChanges();
+      this.refresh(movies);
     })
   }
 
   searchUpcoming(){
     this.movieService.getUpcoming().subscribe(movies => {
-      this.data = movies;
-      this.dataSource.data = this.data;
-      this.dataSource.paginator = this.paginator;
-      this.changeDetectorRefs.detectChanges();
+      this.refresh(movies);
     })
+  }
+
+  searchTopRated(){
+    this.movieService.getTopRated().subscribe(movies => {
+      this.refresh(movies);
+    })
+  }
+
+  searchNowPlaying(){
+    this.movieService.getNowPlaying().subscribe(movies => {
+      this.refresh(movies);
+    })
+  }
+
+  private refresh(movies: Movie[]){
+    this.data = movies;
+    this.dataSource.data = this.data;
+    this.dataSource.paginator = this.paginator;
+    this.changeDetectorRefs.detectChanges();
   }
 }

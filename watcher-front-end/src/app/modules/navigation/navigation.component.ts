@@ -25,19 +25,19 @@ export class NavigationComponent {
   }
 
   searchPopular() {
-    this.eventEmitterService.onSearchPopular();
+    this.eventEmitterService.emit("popular")
   }
 
   searchTopRated() {
-
+    this.eventEmitterService.emit("toprated")
   }
 
   searchUpcoming() {
-    this.eventEmitterService.onSearchUpcoming();
+    this.eventEmitterService.emit("upcoming")
   }
 
   searchNowPlaying() {
-
+    this.eventEmitterService.emit("nowplaying")
   }
 
 }
