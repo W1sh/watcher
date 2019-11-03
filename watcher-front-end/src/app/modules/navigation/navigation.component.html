@@ -12,10 +12,10 @@
   </mat-toolbar>
   <mat-toolbar color="primary" class="secondary-nav" *ngIf="router.url == '/movies'">
     <div>
-      <a mat-button [routerLink]="'movies'"> Top Rated </a>
-      <a mat-button [routerLink]="'movies'"> Now Playing </a>
-      <a mat-button [routerLink]="'movies'"> Popular </a>
-      <a mat-button [routerLink]="'movies'"> Upcoming </a>
+      <a mat-button (click)="searchTopRated()"> Top Rated </a>
+      <a mat-button (click)="searchTopRated()"> Now Playing </a>
+      <a mat-button (click)="searchPopular()"> Popular </a>
+      <a mat-button (click)="searchUpcoming()"> Upcoming </a>
     </div>
   </mat-toolbar>
 </div>

@@ -22,8 +22,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {MovieService} from "./core/services/movie.service";
+import {MovieService} from "./core/services/movie/movie.service";
 import {HttpClientModule} from "@angular/common/http";
+import {EventEmitterService} from "./core/services/event-emitter/event-emitter.service";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,10 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     HttpClientModule
   ],
-  providers: [MovieService],
+  providers: [
+    MovieService,
+    EventEmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

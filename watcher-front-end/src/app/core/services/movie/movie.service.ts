@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import {Movie} from "../../shared/models/movie";
+import {Injectable} from '@angular/core';
+import {Movie} from "../../../shared/models/movie";
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {catchError, map, tap} from "rxjs/operators";
+import {catchError, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ import {catchError, map, tap} from "rxjs/operators";
 export class MovieService {
 
   private searchMovies = 'http://localhost:8080/search/movies';
+  private searchPopularMovies = 'http://localhost:8080/search/movies/popular';
 
   constructor(private http: HttpClient) { }
 
@@ -20,8 +21,16 @@ export class MovieService {
 
     return this.http.get<Movie[]>(this.searchMovies, {params: params})
       .pipe(
-        tap(_ => console.log('fetched heroes', _)),
+        tap(_ => console.log('fetched movies', _)),
         catchError(this.handleError<Movie[]>('getMovies', []))
+      );
+  }
+
+  getPopular(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.searchPopularMovies, {})
+      .pipe(
+        tap(_ => console.log('fetched popular movies', _)),
+        catchError(this.handleError<Movie[]>('getPopular', []))
       );
   }
 
