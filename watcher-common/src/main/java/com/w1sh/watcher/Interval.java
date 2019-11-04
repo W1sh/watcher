@@ -1,25 +1,17 @@
 package com.w1sh.watcher;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Interval {
 
     private Date minimum;
     private Date maximum;
 
-    public Date getMinimum() {
-        return minimum;
-    }
-
-    public void setMinimum(Date minimum) {
-        this.minimum = minimum;
-    }
-
-    public Date getMaximum() {
-        return maximum;
-    }
-
-    public void setMaximum(Date maximum) {
-        this.maximum = maximum;
-    }
 }

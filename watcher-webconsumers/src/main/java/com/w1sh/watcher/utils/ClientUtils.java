@@ -5,18 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.w1sh.watcher.clients.common.RequestParameter;
 import com.w1sh.watcher.configurations.PropertiesConfiguration;
 import com.w1sh.watcher.responses.Response;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Component
 public class ClientUtils {
-
-    private static final Logger logger = LoggerFactory.getLogger(ClientUtils.class);
 
     private final ObjectMapper objectMapper;
     private final PropertiesConfiguration propertiesConfiguration;
@@ -46,7 +44,7 @@ public class ClientUtils {
             Response<T> movieDTOResponse = objectMapper.readValue(json, new TypeReference<>() {});
             return movieDTOResponse.getResults();
         } catch (IOException e) {
-            logger.error("Failed while parsing json", e);
+            log.error("Failed while parsing json", e);
             return new ArrayList<>();
         }
     }

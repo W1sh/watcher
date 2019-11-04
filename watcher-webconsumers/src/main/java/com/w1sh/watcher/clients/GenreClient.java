@@ -1,22 +1,20 @@
 package com.w1sh.watcher.clients;
 
-import com.w1sh.watcher.limiters.RateLimiter;
 import com.w1sh.watcher.clients.common.RequestBuilder;
-import com.w1sh.watcher.utils.ClientUtils;
 import com.w1sh.watcher.connections.HttpClientConnection;
 import com.w1sh.watcher.dtos.GenreDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.w1sh.watcher.limiters.RateLimiter;
+import com.w1sh.watcher.utils.ClientUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 import static com.w1sh.watcher.constants.TmdbConstants.*;
 
+@Slf4j
 @Component
 public class GenreClient {
-
-    private static final Logger logger = LoggerFactory.getLogger(MovieClient.class);
 
     private final RateLimiter rateLimiter;
     private final HttpClientConnection connection;
@@ -29,7 +27,7 @@ public class GenreClient {
     }
 
     public List<GenreDTO> getAllMovieGenres(){
-        logger.info("Preparing to query TMDb API for all movie genres");
+        log.info("Preparing to query TMDb API for all movie genres");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_GENRE, METHOD_MOVIE, METHOD_LIST)
                 .withRequestParams(utils.defaultRequestParams())
@@ -39,7 +37,7 @@ public class GenreClient {
     }
 
     public List<GenreDTO> getAllTVGenres(){
-        logger.info("Preparing to query TMDb API for all tv genres");
+        log.info("Preparing to query TMDb API for all tv genres");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_GENRE, METHOD_TV, METHOD_LIST)
                 .withRequestParams(utils.defaultRequestParams())

@@ -4,34 +4,31 @@ import com.w1sh.watcher.Indexation;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.dtos.QueryParamsDTO;
 import com.w1sh.watcher.services.MovieRequestService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequestMapping ("/search/movies")
+@AllArgsConstructor
 public class MovieRequestController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MovieRequestController.class);
     private final MovieRequestService movieRequestService;
-
-    public MovieRequestController(MovieRequestService movieRequestService) {
-        this.movieRequestService = movieRequestService;
-    }
 
     @GetMapping("/{indexation}")
     public List<MovieDTO> findAll(@PathVariable String indexation){
-        logger.info("Received request to search movies in TMDb API with index type {}", indexation);
+        log.info("Received request to search movies in TMDb API with index type {}", indexation);
         Indexation index = Indexation.fromString(indexation);
         return movieRequestService.findAll(index);
     }
 
     @GetMapping
     public List<MovieDTO> findAll(@RequestParam Map<String, String> params){
-        logger.info("Received request to search movies in TMDb API");
+        log.info("Received request to search movies in TMDb API");
         QueryParamsDTO queryParamsDTO = new QueryParamsDTO(params);
         return movieRequestService.findAll(queryParamsDTO);
     }

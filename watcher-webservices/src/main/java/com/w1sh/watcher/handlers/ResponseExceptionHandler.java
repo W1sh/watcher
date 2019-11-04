@@ -16,5 +16,4 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.badRequest().body(ex);
     }
 
-
 }

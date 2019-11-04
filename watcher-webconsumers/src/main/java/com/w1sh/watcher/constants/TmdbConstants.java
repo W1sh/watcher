@@ -9,8 +9,8 @@ public enum TmdbConstants {
     METHOD_SEARCH("search"),
     METHOD_POPULAR("popular"),
     METHOD_UPCOMING("upcoming"),
-    METHOD_TOP_RATED("toprated"),
-    METHOD_NOW_PLAYING("nowplaying");
+    METHOD_TOP_RATED("top_rated"),
+    METHOD_NOW_PLAYING("now_playing");
 
     private String value;
 

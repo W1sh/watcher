@@ -2,8 +2,8 @@ package com.w1sh.watcher.controllers;
 
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.services.MovieService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,27 +11,24 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Min;
 import java.util.List;
 
+@Slf4j
 @Validated
 @RestController
 @RequestMapping("/movies")
+@AllArgsConstructor
 public class MovieController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
     private final MovieService movieService;
-
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
-    }
 
     @GetMapping()
     public List<MovieDTO> findAll(){
-        logger.info("Received request to find all movies");
+        log.info("Received request to find all movies");
         return movieService.findAll();
     }
 
     @GetMapping("/{id}")
     public MovieDTO findOne(@PathVariable @Min(1) Integer id){
-        logger.info("Received request to find movie with id {}", id);
+        log.info("Received request to find movie with id {}", id);
         return movieService.findById(id);
     }
 
