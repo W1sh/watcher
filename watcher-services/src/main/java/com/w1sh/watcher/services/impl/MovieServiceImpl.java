@@ -5,6 +5,8 @@ import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.entities.Movie;
 import com.w1sh.watcher.repos.MovieRepository;
 import com.w1sh.watcher.services.MovieService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,26 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
+@AllArgsConstructor
 @Service
 public class MovieServiceImpl implements MovieService {
-
-    private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
 
     private final MovieClient movieClient;
     private final ModelMapper modelMapper;
     private final MovieRepository movieRepository;
 
-    public MovieServiceImpl(MovieClient movieClient, ModelMapper modelMapper,
-                            MovieRepository movieRepository) {
-        this.movieClient = movieClient;
-        this.modelMapper = modelMapper;
-        this.movieRepository = movieRepository;
-    }
-
     @Override
     @Transactional(Transactional.TxType.NEVER)
     public List<MovieDTO> findAll() {
-        logger.info("Retrieving all movies from database");
+        log.info("Retrieving all movies from database");
         List<Movie> movies = movieRepository.findAll();
         return movies.stream()
                 .map(movie -> modelMapper.map(movie, MovieDTO.class))
@@ -44,7 +39,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     @Transactional(Transactional.TxType.NEVER)
     public MovieDTO findById(Integer id) {
-        logger.info("Retrieving movie with id {}", id);
+        log.info("Retrieving movie with id {}", id);
         Movie movie = movieRepository.findById(id).orElseThrow();
         return modelMapper.map(movie, MovieDTO.class);
     }
@@ -53,13 +48,13 @@ public class MovieServiceImpl implements MovieService {
     @Transactional(Transactional.TxType.REQUIRED)
     public List<MovieDTO> findByTitle(String title) {
         try {
-            logger.info("Retrieving movies with title containing \"{}\"", title);
+            log.info("Retrieving movies with title containing \"{}\"", title);
             List<MovieDTO> movies = movieClient.findByTitle(title);
             Movie movie = modelMapper.map(movies.get(0), Movie.class);
             movieRepository.save(movie);
             return movies;
         } catch (Exception e){
-            logger.error("Failed to retrieve movies", e);
+            log.error("Failed to retrieve movies", e);
             return new ArrayList<>();
         }
     }

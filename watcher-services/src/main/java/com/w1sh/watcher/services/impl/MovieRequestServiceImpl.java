@@ -5,18 +5,16 @@ import com.w1sh.watcher.clients.MovieClient;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.dtos.QueryParamsDTO;
 import com.w1sh.watcher.services.MovieRequestService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class MovieRequestServiceImpl implements MovieRequestService {
 
     private final MovieClient movieClient;
-
-    public MovieRequestServiceImpl(MovieClient movieClient) {
-        this.movieClient = movieClient;
-    }
 
     @Override
     public List<MovieDTO> findAll(QueryParamsDTO queryParamsDTO) {
