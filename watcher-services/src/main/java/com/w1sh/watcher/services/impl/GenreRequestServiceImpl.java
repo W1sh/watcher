@@ -1,6 +1,6 @@
 package com.w1sh.watcher.services.impl;
 
-import com.w1sh.watcher.clients.GenreConsumer;
+import com.w1sh.watcher.clients.GenreClient;
 import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.services.GenreRequestService;
 import org.slf4j.Logger;
@@ -16,10 +16,10 @@ import java.util.stream.Stream;
 public class GenreRequestServiceImpl implements GenreRequestService {
 
     private static final Logger logger = LoggerFactory.getLogger(GenreRequestServiceImpl.class);
-    private final GenreConsumer genreConsumer;
+    private final GenreClient genreClient;
 
-    public GenreRequestServiceImpl(GenreConsumer genreConsumer) {
-        this.genreConsumer = genreConsumer;
+    public GenreRequestServiceImpl(GenreClient genreClient) {
+        this.genreClient = genreClient;
     }
 
     @Override
@@ -33,12 +33,12 @@ public class GenreRequestServiceImpl implements GenreRequestService {
     @Override
     public List<GenreDTO> findAllMovieGenres() {
         logger.info("Fetching all movie genres from TMDb API");
-        return genreConsumer.getAllMovieGenres();
+        return genreClient.getAllMovieGenres();
     }
 
     @Override
     public List<GenreDTO> findAllTvGenres() {
         logger.info("Fetching all TV genres from TMDb API");
-        return genreConsumer.getAllTVGenres();
+        return genreClient.getAllTVGenres();
     }
 }

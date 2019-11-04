@@ -1,5 +1,6 @@
 package com.w1sh.watcher.connections;
 
+import com.w1sh.watcher.limiters.RateLimiter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -11,11 +12,12 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.time.Instant;
 
 @Component
 public class HttpClientConnection {
 
-    private final Logger logger = LoggerFactory.getLogger(HttpClientConnection.class);
+    private static final Logger logger = LoggerFactory.getLogger(HttpClientConnection.class);
     private final HttpClient client;
 
     public HttpClientConnection() {
@@ -26,7 +28,28 @@ public class HttpClientConnection {
                 .build();
     }
 
-    public HttpResponse get(String url) throws IOException, InterruptedException {
+    public String get(String requestUrl, RateLimiter rateLimiter){
+        try {
+            Instant start = Instant.now();
+            HttpResponse response = get(requestUrl);
+            Instant end = Instant.now();
+            logger.info("Completed request in {} ms", Duration.between(start, end).toMillis());
+
+            if (response.statusCode() == 200 || response.statusCode() == 201){
+                rateLimiter.success(response.headers());
+                return (String) response.body();
+            } else {
+                rateLimiter.failed(response.headers());
+            }
+        } catch (IOException e) {
+            logger.error("An error occurred when receiving data", e);
+        } catch (InterruptedException e) {
+            logger.error("The connection was interrupted", e);
+        }
+        return "";
+    }
+
+    private HttpResponse get(String url) throws IOException, InterruptedException {
         logger.info("Creating http request...");
         var requestMovies = HttpRequest.newBuilder()
                 .uri(URI.create(url))

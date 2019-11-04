@@ -1,4 +1,4 @@
-package com.w1sh.watcher.clients.common;
+package com.w1sh.watcher.limiters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

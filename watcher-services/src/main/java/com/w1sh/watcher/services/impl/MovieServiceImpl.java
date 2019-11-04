@@ -1,6 +1,6 @@
 package com.w1sh.watcher.services.impl;
 
-import com.w1sh.watcher.clients.MovieConsumer;
+import com.w1sh.watcher.clients.MovieClient;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.entities.Movie;
 import com.w1sh.watcher.repos.MovieRepository;
@@ -20,13 +20,13 @@ public class MovieServiceImpl implements MovieService {
 
     private static final Logger logger = LoggerFactory.getLogger(MovieServiceImpl.class);
 
-    private final MovieConsumer movieConsumer;
+    private final MovieClient movieClient;
     private final ModelMapper modelMapper;
     private final MovieRepository movieRepository;
 
-    public MovieServiceImpl(MovieConsumer movieConsumer, ModelMapper modelMapper,
+    public MovieServiceImpl(MovieClient movieClient, ModelMapper modelMapper,
                             MovieRepository movieRepository) {
-        this.movieConsumer = movieConsumer;
+        this.movieClient = movieClient;
         this.modelMapper = modelMapper;
         this.movieRepository = movieRepository;
     }
@@ -54,7 +54,7 @@ public class MovieServiceImpl implements MovieService {
     public List<MovieDTO> findByTitle(String title) {
         try {
             logger.info("Retrieving movies with title containing \"{}\"", title);
-            List<MovieDTO> movies = movieConsumer.findByTitle(title);
+            List<MovieDTO> movies = movieClient.findByTitle(title);
             Movie movie = modelMapper.map(movies.get(0), Movie.class);
             movieRepository.save(movie);
             return movies;
