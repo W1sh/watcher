@@ -5,6 +5,7 @@ import com.w1sh.watcher.connections.HttpClientConnection;
 import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.limiters.RateLimiter;
 import com.w1sh.watcher.utils.ClientUtils;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -13,18 +14,13 @@ import java.util.List;
 import static com.w1sh.watcher.constants.TmdbConstants.*;
 
 @Slf4j
+@AllArgsConstructor
 @Component
 public class GenreClient {
 
     private final RateLimiter rateLimiter;
     private final HttpClientConnection connection;
     private final ClientUtils utils;
-
-    public GenreClient(RateLimiter rateLimiter, HttpClientConnection connection, ClientUtils utils) {
-        this.rateLimiter = rateLimiter;
-        this.connection = connection;
-        this.utils = utils;
-    }
 
     public List<GenreDTO> getAllMovieGenres(){
         log.info("Preparing to query TMDb API for all movie genres");

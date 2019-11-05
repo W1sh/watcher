@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.w1sh.watcher.clients.common.RequestParameter;
 import com.w1sh.watcher.configurations.PropertiesConfiguration;
 import com.w1sh.watcher.responses.Response;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -13,16 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@AllArgsConstructor
 @Component
 public class ClientUtils {
 
     private final ObjectMapper objectMapper;
     private final PropertiesConfiguration propertiesConfiguration;
-
-    public ClientUtils(ObjectMapper objectMapper, PropertiesConfiguration propertiesConfiguration) {
-        this.objectMapper = objectMapper;
-        this.propertiesConfiguration = propertiesConfiguration;
-    }
 
     public RequestParameter[] defaultPagedRequestParams(){
         RequestParameter[] requestParameters = new RequestParameter[3];

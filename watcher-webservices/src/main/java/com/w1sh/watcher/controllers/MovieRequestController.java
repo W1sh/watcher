@@ -20,10 +20,9 @@ public class MovieRequestController {
     private final MovieRequestService movieRequestService;
 
     @GetMapping("/{indexation}")
-    public List<MovieDTO> findAll(@PathVariable String indexation){
+    public List<MovieDTO> findAll(@PathVariable Indexation indexation){
         log.info("Received request to search movies in TMDb API with index type {}", indexation);
-        Indexation index = Indexation.fromString(indexation);
-        return movieRequestService.findAll(index);
+        return movieRequestService.findAll(indexation);
     }
 
     @GetMapping

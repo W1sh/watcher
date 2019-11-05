@@ -5,8 +5,6 @@ import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.services.GenreRequestService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +21,9 @@ public class GenreRequestController {
     private final GenreRequestService genreRequestService;
 
     @GetMapping
-    public List<GenreDTO> findAll(@RequestParam(name = "type", required = false, defaultValue = "all") String type){
+    public List<GenreDTO> findAll(@RequestParam(required = false, defaultValue = "all") GenreType type){
         log.info("Received request to find all genres of type \"{}\"", type);
-        GenreType genreType = GenreType.fromString(type);
-        switch (genreType) {
+        switch (type) {
             case MOVIE: return genreRequestService.findAllMovieGenres();
             case TV: return genreRequestService.findAllTvGenres();
             case ALL: return genreRequestService.findAll();
