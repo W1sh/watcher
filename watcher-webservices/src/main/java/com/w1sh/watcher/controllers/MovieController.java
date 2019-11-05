@@ -27,7 +27,7 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public MovieDTO findOne(@PathVariable @Min(1) Integer id){
+    public MovieDTO findOne(@PathVariable("id") @Min(value = 1, message = "Id must be greater than 1") Integer id){
         log.info("Received request to find movie with id {}", id);
         return movieService.findById(id);
     }
@@ -40,7 +40,7 @@ public class MovieController {
 
     @PutMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public MovieDTO update(@PathVariable( "id" ) Long id, @RequestBody MovieDTO resource) {
+    public MovieDTO update(@PathVariable("id") Long id, @RequestBody MovieDTO resource) {
         return null;
     }
 
