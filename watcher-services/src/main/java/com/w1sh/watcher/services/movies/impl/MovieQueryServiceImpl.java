@@ -28,8 +28,7 @@ public class MovieQueryServiceImpl implements MovieQueryService {
     @Transactional (Transactional.TxType.NEVER)
     public List<MovieDTO> findAll() {
         log.info("Retrieving all movies from database");
-        List<Movie> movies = movieRepository.findAll();
-        return movies.stream()
+        return movieRepository.findAll().stream()
                 .map(movie -> modelMapper.map(movie, MovieDTO.class))
                 .collect(Collectors.toList());
     }
@@ -38,8 +37,9 @@ public class MovieQueryServiceImpl implements MovieQueryService {
     @Transactional(Transactional.TxType.NEVER)
     public MovieDTO findById(Integer id) {
         log.info("Retrieving movie with id {}", id);
-        Movie movie = movieRepository.findById(id).orElseThrow();
-        return modelMapper.map(movie, MovieDTO.class);
+        return movieRepository.findById(id)
+                .map(movie -> modelMapper.map(movie, MovieDTO.class))
+                .orElseThrow();
     }
 
     @Override

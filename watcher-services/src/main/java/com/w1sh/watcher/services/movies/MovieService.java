@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface MovieService {
 
-    void save(MovieDTO movieDTO);
+    void saveAll(List<MovieDTO> movieDTOs);
 
 }

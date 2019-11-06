@@ -2,6 +2,7 @@ package com.w1sh.watcher.controllers;
 
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.services.movies.MovieQueryService;
+import com.w1sh.watcher.services.movies.MovieService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.List;
 public class MovieController {
 
     private final MovieQueryService movieQueryService;
+    private final MovieService movieService;
 
     @GetMapping()
     public List<MovieDTO> findAll(){
@@ -34,8 +36,9 @@ public class MovieController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MovieDTO create(@RequestBody MovieDTO resource) {
-        return null;
+    public void create(@RequestBody List<MovieDTO> resources) {
+        log.info("Received request to save movies");
+        movieService.saveAll(resources);
     }
 
     @PutMapping(value = "/{id}")
