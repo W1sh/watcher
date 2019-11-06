@@ -1,15 +1,13 @@
-package com.w1sh.watcher.services.impl;
+package com.w1sh.watcher.services.movies.impl;
 
 import com.w1sh.watcher.clients.MovieClient;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.entities.Movie;
 import com.w1sh.watcher.repos.MovieRepository;
-import com.w1sh.watcher.services.MovieService;
+import com.w1sh.watcher.services.movies.MovieQueryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -20,14 +18,14 @@ import java.util.stream.Collectors;
 @Slf4j
 @AllArgsConstructor
 @Service
-public class MovieServiceImpl implements MovieService {
+public class MovieQueryServiceImpl implements MovieQueryService {
 
     private final MovieClient movieClient;
     private final ModelMapper modelMapper;
     private final MovieRepository movieRepository;
 
     @Override
-    @Transactional(Transactional.TxType.NEVER)
+    @Transactional (Transactional.TxType.NEVER)
     public List<MovieDTO> findAll() {
         log.info("Retrieving all movies from database");
         List<Movie> movies = movieRepository.findAll();

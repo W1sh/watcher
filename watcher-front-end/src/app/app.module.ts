@@ -25,6 +25,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MovieService} from "./core/services/movie/movie.service";
 import {HttpClientModule} from "@angular/common/http";
 import {EventEmitterService} from "./core/services/event-emitter/event-emitter.service";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {EventEmitterService} from "./core/services/event-emitter/event-emitter.s
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule
   ],
   providers: [
     MovieService,

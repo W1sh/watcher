@@ -1,15 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Movie} from "../../../shared/models/movie";
 import {Observable, of} from "rxjs";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {catchError, tap} from "rxjs/operators";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class MovieService {
 
+  private saveMovies = 'http://localhost:8080/movies';
   private searchMovies = 'http://localhost:8080/search/movies';
   private searchPopularMovies = 'http://localhost:8080/search/movies/popular';
   private searchUpcomingMovies = 'http://localhost:8080/search/movies/upcoming';
@@ -17,6 +23,13 @@ export class MovieService {
   private searchNowPlayingMovies = 'http://localhost:8080/search/movies/nowplaying';
 
   constructor(private http: HttpClient) { }
+
+  saveMovie(movies: Movie[]): Observable<unknown> {
+    return this.http.post<Movie>(this.saveMovies, movies, httpOptions)
+      .pipe(
+        catchError(this.handleError('save'))
+      );
+  }
 
   getMovies(): Observable<Movie[]> {
     let params = new HttpParams();

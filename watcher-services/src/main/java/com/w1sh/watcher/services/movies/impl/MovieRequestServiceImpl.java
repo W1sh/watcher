@@ -1,10 +1,10 @@
-package com.w1sh.watcher.services.impl;
+package com.w1sh.watcher.services.movies.impl;
 
 import com.w1sh.watcher.Indexation;
 import com.w1sh.watcher.clients.MovieClient;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.dtos.QueryParamsDTO;
-import com.w1sh.watcher.services.MovieRequestService;
+import com.w1sh.watcher.services.movies.MovieRequestService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

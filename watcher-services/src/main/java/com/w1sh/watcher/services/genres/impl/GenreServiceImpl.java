@@ -1,9 +1,9 @@
-package com.w1sh.watcher.services.impl;
+package com.w1sh.watcher.services.genres.impl;
 
 import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.entities.Genre;
 import com.w1sh.watcher.repos.GenreRepository;
-import com.w1sh.watcher.services.GenreService;
+import com.w1sh.watcher.services.genres.GenreService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;

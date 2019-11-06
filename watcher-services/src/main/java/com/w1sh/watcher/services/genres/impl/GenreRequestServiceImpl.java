@@ -1,8 +1,8 @@
-package com.w1sh.watcher.services.impl;
+package com.w1sh.watcher.services.genres.impl;
 
 import com.w1sh.watcher.clients.GenreClient;
 import com.w1sh.watcher.dtos.GenreDTO;
-import com.w1sh.watcher.services.GenreRequestService;
+import com.w1sh.watcher.services.genres.GenreRequestService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

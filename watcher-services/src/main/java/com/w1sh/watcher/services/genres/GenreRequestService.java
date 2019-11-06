@@ -1,4 +1,4 @@
-package com.w1sh.watcher.services;
+package com.w1sh.watcher.services.genres;
 
 import com.w1sh.watcher.dtos.GenreDTO;
 

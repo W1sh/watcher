@@ -1,7 +1,7 @@
 package com.w1sh.watcher.controllers;
 
 import com.w1sh.watcher.dtos.MovieDTO;
-import com.w1sh.watcher.services.MovieService;
+import com.w1sh.watcher.services.movies.MovieQueryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,18 +18,18 @@ import java.util.List;
 @AllArgsConstructor
 public class MovieController {
 
-    private final MovieService movieService;
+    private final MovieQueryService movieQueryService;
 
     @GetMapping()
     public List<MovieDTO> findAll(){
         log.info("Received request to find all movies");
-        return movieService.findAll();
+        return movieQueryService.findAll();
     }
 
     @GetMapping("/{id}")
     public MovieDTO findOne(@PathVariable("id") @Min(value = 1, message = "Id must be greater than 1") Integer id){
         log.info("Received request to find movie with id {}", id);
-        return movieService.findById(id);
+        return movieQueryService.findById(id);
     }
 
     @PostMapping

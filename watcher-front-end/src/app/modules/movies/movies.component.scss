@@ -8,6 +8,14 @@
   justify-items: flex-start;
 }
 
+.flex-toolbar-row {
+  justify-content: space-between;
+}
+
+.pointer-icon {
+  cursor: pointer;
+}
+
 .full-width-input {
   margin-top: 2%;
   width: 50%;

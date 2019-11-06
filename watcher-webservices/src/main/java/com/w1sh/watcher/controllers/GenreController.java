@@ -1,7 +1,7 @@
 package com.w1sh.watcher.controllers;
 
 import com.w1sh.watcher.dtos.GenreDTO;
-import com.w1sh.watcher.services.GenreService;
+import com.w1sh.watcher.services.genres.GenreService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

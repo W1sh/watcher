@@ -1,10 +1,10 @@
-package com.w1sh.watcher.services;
+package com.w1sh.watcher.services.movies;
 
 import com.w1sh.watcher.dtos.MovieDTO;
 
 import java.util.List;
 
-public interface MovieService {
+public interface MovieQueryService {
 
     List<MovieDTO> findAll();
 

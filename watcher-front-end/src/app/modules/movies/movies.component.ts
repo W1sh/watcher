@@ -6,6 +6,7 @@ import {Movie} from "../../shared/models/movie";
 import {MovieService} from "../../core/services/movie/movie.service";
 import {EventEmitterService} from "../../core/services/event-emitter/event-emitter.service";
 import {Subscription} from "rxjs";
+import {SelectionModel} from "@angular/cdk/collections";
 
 @Component({
   selector: 'app-movies',
@@ -15,8 +16,9 @@ import {Subscription} from "rxjs";
 
 export class MoviesComponent implements OnInit {
   data: Movie[];
-  displayedColumns: string[] = ['title', 'popularity', 'releaseDate', 'voteCount', 'voteAverage'];
+  displayedColumns: string[] = ['select', 'title', 'popularity', 'releaseDate', 'voteCount', 'voteAverage'];
   dataSource: MatTableDataSource<Movie>;
+  selection = new SelectionModel<Movie>(true, []);
   subscription: Subscription;
 
   constructor(private movieService: MovieService, private eventEmitterService: EventEmitterService,
@@ -84,6 +86,29 @@ export class MoviesComponent implements OnInit {
     this.movieService.getNowPlaying().subscribe(movies => {
       this.refresh(movies);
     })
+  }
+
+  save(){
+    this.movieService.saveMovie(this.selection.selected).subscribe();
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  checkboxLabel(row?: Movie): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
   private refresh(movies: Movie[]){

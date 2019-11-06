@@ -1,4 +1,4 @@
-package com.w1sh.watcher.services;
+package com.w1sh.watcher.services.movies;
 
 import com.w1sh.watcher.Indexation;
 import com.w1sh.watcher.dtos.MovieDTO;
