@@ -29,6 +29,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { LoginComponent } from './modules/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { RegisterComponent } from './modules/register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MoviesComponent,
     CloseMenuDirective,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

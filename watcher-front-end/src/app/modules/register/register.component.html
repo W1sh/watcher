@@ -1,0 +1,88 @@
+<mat-card class="register-card">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <table cellspacing="0">
+        <tr>
+
+          <td>
+            <mat-form-field>
+              <label>
+                <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName" required>
+              </label>
+            </mat-form-field>
+          </td>
+          <td class="spacer-col"></td>
+          <td>
+            <mat-form-field>
+              <label>
+                <input matInput placeholder="Last Name" [(ngModel)]="lastName"type="lastName" name="lastName" required>
+              </label>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr class="spacer-row"></tr>
+
+        <tr>
+          <td colspan="3">
+            <mat-form-field class="full-width-input">
+              <label>
+                <input matInput placeholder="Username" [(ngModel)]="username" name="userName" required>
+              </label>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr class="spacer-row"></tr>
+
+        <tr>
+          <td>
+            <mat-form-field>
+              <label>
+                <input matInput placeholder="Password" [(ngModel)]="password" name="password" required>
+              </label>
+            </mat-form-field>
+          </td>
+          <td class="spacer-col"></td>
+          <td>
+            <mat-form-field>
+              <label>
+                <input matInput placeholder="Confirm password" [(ngModel)]="confirmedPassword" name="password" required>
+              </label>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr class="spacer-row"></tr>
+
+        <tr>
+          <td colspan="3">
+            <mat-form-field class="full-width-input">
+              <label>
+                <input matInput placeholder="Your Email" [(ngModel)]="email" name="email" required>
+              </label>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <mat-form-field class="full-width-input">
+              <label>
+                <input matInput placeholder="Confirm Your Email" [(ngModel)]="confirmedEmail" name="email" required>
+              </label>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr class="spacer-row"></tr>
+      </table>
+    </form>
+<!--    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="register()" color="primary">Register</button>
+    <button mat-raised-button [routerLink]="['../login']" color="secondary">Cancel</button>
+  </mat-card-actions>
+</mat-card>
