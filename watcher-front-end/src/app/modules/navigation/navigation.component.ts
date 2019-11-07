@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
-import {Router} from "@angular/router";
-import {EventEmitterService} from "../../core/services/event-emitter/event-emitter.service";
+import {Router} from '@angular/router';
+import {EventEmitterService} from '../../core/services/event-emitter/event-emitter.service';
 
 @Component({
   selector: 'app-navigation',
@@ -25,19 +25,19 @@ export class NavigationComponent {
   }
 
   searchPopular() {
-    this.eventEmitterService.emit("popular")
+    this.eventEmitterService.emit('popular');
   }
 
   searchTopRated() {
-    this.eventEmitterService.emit("toprated")
+    this.eventEmitterService.emit('toprated');
   }
 
   searchUpcoming() {
-    this.eventEmitterService.emit("upcoming")
+    this.eventEmitterService.emit('upcoming');
   }
 
   searchNowPlaying() {
-    this.eventEmitterService.emit("nowplaying")
+    this.eventEmitterService.emit('nowplaying');
   }
 
 }

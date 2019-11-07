@@ -1,12 +1,12 @@
 import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from "@angular/material/sort";
-import {Movie} from "../../shared/models/movie";
-import {MovieService} from "../../core/services/movie/movie.service";
-import {EventEmitterService} from "../../core/services/event-emitter/event-emitter.service";
-import {Subscription} from "rxjs";
-import {SelectionModel} from "@angular/cdk/collections";
+import {MatSort} from '@angular/material/sort';
+import {Movie} from '../../shared/models/movie';
+import {MovieService} from '../../core/services/movie/movie.service';
+import {EventEmitterService} from '../../core/services/event-emitter/event-emitter.service';
+import {Subscription} from 'rxjs';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-movies',
@@ -41,54 +41,54 @@ export class MoviesComponent implements OnInit {
             case 'voteAverage': return item.vote_average;
             default: return item[property];
           }
-        }
+        };
       }
-      if(this.paginator){
+      if (this.paginator) {
         this.dataSource.paginator = this.paginator;
       }
     });
-    if(this.subscription == undefined){
+    if (this.subscription === undefined) {
       this.subscription = this.eventEmitterService.invoker.subscribe(
         (type: string) => {
           switch (type) {
-            case "popular": this.searchPopular();
-              break;
-            case "upcoming": this.searchUpcoming();
-              break;
-            case "toprated": this.searchTopRated();
-              break;
-            case "nowplaying": this.searchNowPlaying();
-              break;
+            case 'popular': this.searchPopular();
+                            break;
+            case 'upcoming': this.searchUpcoming();
+                             break;
+            case 'toprated': this.searchTopRated();
+                             break;
+            case 'nowplaying': this.searchNowPlaying();
+                               break;
           }
         });
     }
   }
 
-  searchPopular(){
+  searchPopular() {
     this.movieService.getPopular().subscribe(movies => {
       this.refresh(movies);
-    })
+    });
   }
 
-  searchUpcoming(){
+  searchUpcoming() {
     this.movieService.getUpcoming().subscribe(movies => {
       this.refresh(movies);
-    })
+    });
   }
 
-  searchTopRated(){
+  searchTopRated() {
     this.movieService.getTopRated().subscribe(movies => {
       this.refresh(movies);
-    })
+    });
   }
 
-  searchNowPlaying(){
+  searchNowPlaying() {
     this.movieService.getNowPlaying().subscribe(movies => {
       this.refresh(movies);
-    })
+    });
   }
 
-  save(){
+  save() {
     this.movieService.saveMovie(this.selection.selected).subscribe();
   }
 
@@ -111,7 +111,7 @@ export class MoviesComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  private refresh(movies: Movie[]){
+  private refresh(movies: Movie[]) {
     this.data = movies;
     this.dataSource.data = this.data;
     this.dataSource.paginator = this.paginator;
