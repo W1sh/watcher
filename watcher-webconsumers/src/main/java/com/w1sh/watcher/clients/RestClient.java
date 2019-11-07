@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.w1sh.watcher.clients.common.RequestParameter;
 import com.w1sh.watcher.configurations.PropertiesConfiguration;
+import com.w1sh.watcher.dtos.GenreDTO;
 import com.w1sh.watcher.responses.Response;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,8 @@ public class RestClient {
                 .uri(url)
                 .retrieve()
                 .toEntity(String.class)
-                .map(ResponseEntity::getBody).block();
+                .map(ResponseEntity::getBody)
+                .block();
     }
 
     public RequestParameter[] defaultPagedRequestParams(){
