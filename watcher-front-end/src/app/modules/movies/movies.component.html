@@ -58,9 +58,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-toolbar>
+    <mat-toolbar class="transparent-toolbar">
       <mat-toolbar-row class="flex-toolbar-row">
-        <mat-icon class="pointer-icon" (click)="save()" title="Save movie">save</mat-icon>
+        <mat-icon class="pointer-icon" (click)="save()" title="Add to your list">add</mat-icon>
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
       </mat-toolbar-row>
     </mat-toolbar>

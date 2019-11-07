@@ -1,8 +1,8 @@
-import { Directive, ElementRef, Input, HostListener } from "@angular/core";
-import {timeout} from "rxjs/operators";
+import { Directive, ElementRef, Input, HostListener } from '@angular/core';
+import {timeout} from 'rxjs/operators';
 
 @Directive({
-  selector: "[menuClose]"
+  selector: '[menuClose]'
 })
 export class CloseMenuDirective {
   @Input()
@@ -10,8 +10,8 @@ export class CloseMenuDirective {
 
   constructor(private element: ElementRef) { }
 
-  @HostListener("click")
+  @HostListener('click')
   private onClick() {
-    this.menu.classList.remove("show");
+    this.menu.classList.remove('show');
   }
 }

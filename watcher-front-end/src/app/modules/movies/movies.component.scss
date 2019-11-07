@@ -10,6 +10,11 @@
 
 .flex-toolbar-row {
   justify-content: space-between;
+  background: inherit !important;
+}
+
+.transparent-toolbar {
+  background: inherit !important;
 }
 
 .pointer-icon {

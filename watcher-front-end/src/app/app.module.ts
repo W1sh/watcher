@@ -20,12 +20,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CloseMenuDirective } from './shared/directives/close-menu.directive';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MovieService} from "./core/services/movie/movie.service";
-import {HttpClientModule} from "@angular/common/http";
-import {EventEmitterService} from "./core/services/event-emitter/event-emitter.service";
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MovieService} from './core/services/movie/movie.service';
+import {HttpClientModule} from '@angular/common/http';
+import {EventEmitterService} from './core/services/event-emitter/event-emitter.service';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { LoginComponent } from './modules/login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { RegisterComponent } from './modules/register/register.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     HomeComponent,
     MoviesComponent,
     CloseMenuDirective,
+    LoginComponent,
+    RegisterComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [
     MovieService,
