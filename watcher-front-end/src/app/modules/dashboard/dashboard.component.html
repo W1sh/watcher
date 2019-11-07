@@ -1,9 +1,8 @@
 <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
-  <mat-grid-tile
-    *ngFor="let tile of tiles"
-    [colspan]="tile.cols"
-    [rowspan]="tile.rows"
-    [style.background]="tile.color">
-    {{tile.text}}
+  <mat-grid-tile (click)="showDetails(tile)" *ngFor="let tile of tiles"
+                 [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+    <div class="tile-content">
+      {{tile.text}}
+    </div>
   </mat-grid-tile>
 </mat-grid-list>

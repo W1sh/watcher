@@ -28,5 +28,8 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  showDetails(tile: Tile) {
+    console.log("ALLO")
+  }
 }
 
