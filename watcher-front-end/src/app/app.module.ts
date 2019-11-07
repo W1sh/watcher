@@ -30,6 +30,7 @@ import { LoginComponent } from './modules/login/login.component';
 import {FormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { RegisterComponent } from './modules/register/register.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { RegisterComponent } from './modules/register/register.component';
     CloseMenuDirective,
     LoginComponent,
     RegisterComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

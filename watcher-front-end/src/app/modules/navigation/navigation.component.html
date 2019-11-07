@@ -1,13 +1,17 @@
 <div>
   <mat-toolbar color="primary">
-  <span>
-    <a mat-button [routerLink]="''">
-      <h1>Watcher</h1>
-    </a>
-  </span>
-    <span class="menu-spacer"></span>
-    <div>
-      <a mat-button [routerLink]="'movies'"> Movie </a>
+    <span>
+      <a mat-button [routerLink]="''">
+        <h1>Watcher</h1>
+      </a>
+    </span>
+    <div class="menu-items">
+      <div>
+        <a mat-button [routerLink]="'movies'"> Movies </a>
+      </div>
+      <div>
+        <a mat-button [routerLink]="'dashboard'"> Dashboard </a>
+      </div>
     </div>
   </mat-toolbar>
   <mat-toolbar color="primary" class="secondary-nav" *ngIf="router.url == '/movies'">
