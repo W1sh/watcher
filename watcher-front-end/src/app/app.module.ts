@@ -26,6 +26,9 @@ import {MovieService} from "./core/services/movie/movie.service";
 import {HttpClientModule} from "@angular/common/http";
 import {EventEmitterService} from "./core/services/event-emitter/event-emitter.service";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { LoginComponent } from './modules/login/login.component';
+import {FormsModule} from "@angular/forms";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     HomeComponent,
     MoviesComponent,
     CloseMenuDirective,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     MovieService,
