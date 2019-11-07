@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Tile} from '../../shared/models/tile';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +22,7 @@ export class DashboardComponent implements OnInit {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
     {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
   ];
+  search: string;
 
   constructor() { }
 
@@ -29,7 +31,7 @@ export class DashboardComponent implements OnInit {
   }
 
   showDetails(tile: Tile) {
-    console.log("ALLO")
+    console.log('ALLO');
   }
 }
 

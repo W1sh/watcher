@@ -21,3 +21,19 @@
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
+.search-form {
+  display: flex;
+  justify-content: center;
+  width: 94%;
+  margin: 3%;
+}
+.search-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.search-input-field {
+  margin-left: 5px;
+  width: 100%;
+}
