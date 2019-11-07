@@ -4,7 +4,10 @@ import com.w1sh.watcher.limiters.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.ProxySelector;
@@ -20,13 +23,20 @@ import java.time.Instant;
 public class HttpClientConnection {
 
     private final HttpClient client;
+    private final RestTemplate restTemplate;
 
-    public HttpClientConnection() {
+    public HttpClientConnection(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
         this.client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .followRedirects(HttpClient.Redirect.NORMAL)
                 .proxy(ProxySelector.getDefault())
                 .build();
+    }
+
+    public String getAsEntity(String requestUrl) {
+        ResponseEntity<String> response = restTemplate.getForEntity(requestUrl, String.class);
+        return response.getBody();
     }
 
     public String get(String requestUrl, RateLimiter rateLimiter){

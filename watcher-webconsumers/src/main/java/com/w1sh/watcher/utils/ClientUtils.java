@@ -30,7 +30,7 @@ public class ClientUtils {
     }
 
     public RequestParameter[] defaultRequestParams(){
-        RequestParameter[] requestParameters = new RequestParameter[3];
+        RequestParameter[] requestParameters = new RequestParameter[2];
         requestParameters[0] = new RequestParameter("api_key", propertiesConfiguration.getTmdbKey());
         requestParameters[1] = new RequestParameter("language", "en-US");
         return requestParameters;

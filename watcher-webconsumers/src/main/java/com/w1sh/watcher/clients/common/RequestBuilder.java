@@ -33,6 +33,11 @@ public class RequestBuilder {
         return this;
     }
 
+    public RequestBuilder withId(Integer id){
+        this.methods.add(String.valueOf(id));
+        return this;
+    }
+
     public RequestBuilder withRequestParams(RequestParameter... params){
         this.params.addAll(Arrays.asList(params));
         return this;

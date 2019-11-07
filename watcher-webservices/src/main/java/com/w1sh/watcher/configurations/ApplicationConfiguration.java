@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @ComponentScan("com.w1sh.watcher")
@@ -18,6 +19,9 @@ public class ApplicationConfiguration {
 
     @Bean
     public ObjectMapper objectMapper() { return new ObjectMapper(); }
+
+    @Bean
+    public RestTemplate restTemplate() { return new RestTemplate(); }
 
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {

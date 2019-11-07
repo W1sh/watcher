@@ -2,7 +2,7 @@ package com.w1sh.watcher.services.movies.impl;
 
 import com.w1sh.watcher.clients.MovieClient;
 import com.w1sh.watcher.dtos.MovieDTO;
-import com.w1sh.watcher.entities.Movie;
+import com.w1sh.watcher.model.entities.Movie;
 import com.w1sh.watcher.repos.MovieRepository;
 import com.w1sh.watcher.services.movies.MovieQueryService;
 import lombok.AllArgsConstructor;

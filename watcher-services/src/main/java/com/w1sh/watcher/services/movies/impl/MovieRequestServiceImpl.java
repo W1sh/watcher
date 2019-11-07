@@ -17,6 +17,11 @@ public class MovieRequestServiceImpl implements MovieRequestService {
     private final MovieClient movieClient;
 
     @Override
+    public MovieDTO find(Integer id) {
+        return movieClient.findById(id);
+    }
+
+    @Override
     public List<MovieDTO> findAll(QueryParamsDTO queryParamsDTO) {
         return movieClient.findByTitle(queryParamsDTO.getSearch());
     }

@@ -31,4 +31,10 @@ public class MovieRequestController {
         QueryParamsDTO queryParamsDTO = new QueryParamsDTO(params);
         return movieRequestService.findAll(queryParamsDTO);
     }
+
+    @GetMapping("/single/{id}")
+    public MovieDTO findAll(@PathVariable Integer id){
+        log.info("Received request to search movies in TMDb API");
+        return movieRequestService.find(id);
+    }
 }

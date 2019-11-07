@@ -23,6 +23,18 @@ public class MovieClient {
     private final HttpClientConnection connection;
     private final ClientUtils utils;
 
+    public MovieDTO findById(Integer id) {
+        log.info("Preparing to query TMDb API for popular movies");
+        String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
+                .withMethods(METHOD_MOVIE)
+                .withId(id)
+                .withRequestParams(utils.defaultRequestParams())
+                .getRequestUrl();
+        String json = connection.getAsEntity(requestUrl);
+        //return utils.parse(json);
+        return null;
+    }
+
     public List<MovieDTO> findPopular(){
         log.info("Preparing to query TMDb API for popular movies");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)

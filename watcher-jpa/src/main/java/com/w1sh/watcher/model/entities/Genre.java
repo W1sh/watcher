@@ -1,4 +1,4 @@
-package com.w1sh.watcher.entities;
+package com.w1sh.watcher.model.entities;
 
 import lombok.Data;
 
@@ -18,7 +18,7 @@ public class Genre {
     @Column(name = "VALUE", nullable = false, unique = true)
     private String value;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "movie_genre",
             joinColumns = @JoinColumn(name = "genre_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))

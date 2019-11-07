@@ -1,7 +1,7 @@
 package com.w1sh.watcher.services.movies.impl;
 
 import com.w1sh.watcher.dtos.MovieDTO;
-import com.w1sh.watcher.entities.Movie;
+import com.w1sh.watcher.model.entities.Movie;
 import com.w1sh.watcher.repos.MovieRepository;
 import com.w1sh.watcher.services.movies.MovieService;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

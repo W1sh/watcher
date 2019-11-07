@@ -1,7 +1,7 @@
 package com.w1sh.watcher.services.genres.impl;
 
 import com.w1sh.watcher.dtos.GenreDTO;
-import com.w1sh.watcher.entities.Genre;
+import com.w1sh.watcher.model.entities.Genre;
 import com.w1sh.watcher.repos.GenreRepository;
 import com.w1sh.watcher.services.genres.GenreService;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.w1sh.watcher.repos;
 
-import com.w1sh.watcher.entities.Genre;
+import com.w1sh.watcher.model.entities.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
