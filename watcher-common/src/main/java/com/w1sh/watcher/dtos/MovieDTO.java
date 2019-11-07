@@ -13,7 +13,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties (value = { "video", "adult", "backdrop_path", "original_language", "title"})
+@JsonIgnoreProperties (value = { "video", "adult", "backdrop_path", "original_language", "title",
+"belongs_to_collection", "budget", "homepage", "imdb_id", "production_companies", "production_countries",
+"revenue", "spoken_languages", "status", "tagline"})
 public class MovieDTO {
 
     @JsonProperty(value = "original_title")
@@ -28,8 +30,9 @@ public class MovieDTO {
     @JsonProperty(value = "poster_path")
     private String posterPath;
 
-    @JsonProperty(value = "genre_ids")
-    private List<Integer> genres;
+    private List<Integer> genres_ids;
+
+    private List<GenreDTO> genres;
 
     @JsonProperty(value = "release_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -40,5 +43,7 @@ public class MovieDTO {
 
     @JsonProperty(value = "vote_average")
     private Double voteAverage;
+
+    private Integer runtime;
 
 }

@@ -18,7 +18,7 @@ public class MovieRequestServiceImpl implements MovieRequestService {
 
     @Override
     public MovieDTO find(Integer id) {
-        return movieClient.findById(id);
+        return movieClient.findById(id).orElseThrow();
     }
 
     @Override

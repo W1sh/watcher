@@ -5,12 +5,12 @@ import com.w1sh.watcher.clients.common.RequestParameter;
 import com.w1sh.watcher.connections.HttpClientConnection;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.limiters.RateLimiter;
-import com.w1sh.watcher.utils.ClientUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.w1sh.watcher.constants.TmdbConstants.*;
 
@@ -20,59 +20,57 @@ import static com.w1sh.watcher.constants.TmdbConstants.*;
 public class MovieClient {
 
     private final RateLimiter rateLimiter;
+    private final RestClient restClient;
     private final HttpClientConnection connection;
-    private final ClientUtils utils;
 
-    public MovieDTO findById(Integer id) {
-        log.info("Preparing to query TMDb API for popular movies");
-        String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
+    public Optional<MovieDTO> findById(Integer id) {
+        log.info("Preparing to query TMDb API for the movie with id \"{}\"", id);
+        String json = restClient.get(RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_MOVIE)
                 .withId(id)
-                .withRequestParams(utils.defaultRequestParams())
-                .getRequestUrl();
-        String json = connection.getAsEntity(requestUrl);
-        //return utils.parse(json);
-        return null;
+                .withRequestParams(restClient.defaultRequestParams())
+                .getRequestUrl());
+        return restClient.parseSingle(json, MovieDTO.class);
     }
 
     public List<MovieDTO> findPopular(){
         log.info("Preparing to query TMDb API for popular movies");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_MOVIE, METHOD_POPULAR)
-                .withRequestParams(utils.defaultPagedRequestParams())
+                .withRequestParams(restClient.defaultPagedRequestParams())
                 .getRequestUrl();
         String json = connection.get(requestUrl, rateLimiter);
-        return utils.parse(json);
+        return restClient.parse(json);
     }
 
     public List<MovieDTO> findNowPlaying(){
         log.info("Preparing to query TMDb API for now playing movies");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_MOVIE, METHOD_NOW_PLAYING)
-                .withRequestParams(utils.defaultPagedRequestParams())
+                .withRequestParams(restClient.defaultPagedRequestParams())
                 .getRequestUrl();
         String json = connection.get(requestUrl, rateLimiter);
-        return utils.parse(json);
+        return restClient.parse(json);
     }
 
     public List<MovieDTO> findTopRated(){
         log.info("Preparing to query TMDb API for top rated movies");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_MOVIE, METHOD_TOP_RATED)
-                .withRequestParams(utils.defaultPagedRequestParams())
+                .withRequestParams(restClient.defaultPagedRequestParams())
                 .getRequestUrl();
         String json = connection.get(requestUrl, rateLimiter);
-        return utils.parse(json);
+        return restClient.parse(json);
     }
 
     public List<MovieDTO> findUpcoming(){
         log.info("Preparing to query TMDb API for upcoming movies");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_MOVIE, METHOD_UPCOMING)
-                .withRequestParams(utils.defaultPagedRequestParams())
+                .withRequestParams(restClient.defaultPagedRequestParams())
                 .getRequestUrl();
         String json = connection.get(requestUrl, rateLimiter);
-        return utils.parse(json);
+        return restClient.parse(json);
     }
 
     public List<MovieDTO> findByTitle(String title){
@@ -81,10 +79,10 @@ public class MovieClient {
         RequestParameter inclAdultParam = new RequestParameter("include_adult", "false");
         String requestUrl = RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_SEARCH, METHOD_MOVIE)
-                .withRequestParams(utils.defaultPagedRequestParams())
+                .withRequestParams(restClient.defaultPagedRequestParams())
                 .withRequestParams(searchParam, inclAdultParam)
                 .getRequestUrl();
         String json = connection.get(requestUrl, rateLimiter);
-        return utils.parse(json);
+        return restClient.parse(json);
     }
 }
