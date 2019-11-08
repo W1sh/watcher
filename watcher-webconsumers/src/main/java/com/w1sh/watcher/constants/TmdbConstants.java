@@ -6,6 +6,8 @@ public enum TmdbConstants {
     METHOD_TV("tv"),
     METHOD_MOVIE("movie"),
     METHOD_GENRE("genre"),
+    METHOD_SIMILAR("similar"),
+    METHOD_RECOMMENDATIONS("recommendations"),
     METHOD_SEARCH("search"),
     METHOD_POPULAR("popular"),
     METHOD_UPCOMING("upcoming"),

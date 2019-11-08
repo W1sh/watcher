@@ -19,15 +19,38 @@ public class MovieClient {
 
     private final RestClient restClient;
 
-    public Optional<MovieDTO> findById(Integer id) {
+    public Optional<MovieDTO> findById(Integer id, RequestParameter parameter) {
         log.info("Preparing to query TMDb API for the movie with id \"{}\"", id);
         String json = restClient.get(RequestBuilder.withBaseUrl(TMDB_API_BASE)
                 .withMethods(METHOD_MOVIE)
                 .withId(id)
                 .withRequestParams(restClient.defaultRequestParams())
+                .withRequestParams(parameter)
                 .getRequestUrl());
         return restClient.parseSingle(json, MovieDTO.class);
     }
+
+    /*public List<MovieDTO> findRecommendationsForId(Integer id) {
+        log.info("Preparing to query TMDb API for a list of recommendations for movie with id \"{}\"", id);
+        String json = restClient.get(RequestBuilder.withBaseUrl(TMDB_API_BASE)
+                .withMethods(METHOD_MOVIE)
+                .withId(id)
+                .withMethods(METHOD_RECOMMENDATIONS)
+                .withRequestParams(restClient.defaultRequestParams())
+                .getRequestUrl());
+        return restClient.parse(json);
+    }
+
+    public List<MovieDTO> findSimilarForId(Integer id) {
+        log.info("Preparing to query TMDb API for a list of similar movies for movie with id \"{}\"", id);
+        String json = restClient.get(RequestBuilder.withBaseUrl(TMDB_API_BASE)
+                .withMethods(METHOD_MOVIE)
+                .withId(id)
+                .withMethods(METHOD_SIMILAR)
+                .withRequestParams(restClient.defaultRequestParams())
+                .getRequestUrl());
+        return restClient.parse(json);
+    }*/
 
     public List<MovieDTO> findPopular(){
         log.info("Preparing to query TMDb API for popular movies");

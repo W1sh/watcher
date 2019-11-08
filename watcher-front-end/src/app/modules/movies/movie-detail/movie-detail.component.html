@@ -18,10 +18,34 @@
     </div>
   </div>
   <div class="mat-elevation-z8 flex-div">
+    <div id="movie-images-div" class="movie-images-container">
+      <div id="movie-images-title-div" class="movie-subtitle-container">
+        <h3 class="movie-title">Images</h3>
+      </div>
+      <mat-grid-list cols="6" rowHeight="150px" gutterSize="10px" class="grid-overflow">
+        <mat-grid-tile *ngFor="let similarTile of similarMoviesTiles | async"
+                       [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="similarTile.color">
+          <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}">
+            <h3>{{similarTile.text}}</h3>
+          </a>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+
+  <div class="mat-elevation-z8 flex-div">
     <div id="movie-similar-div" class="movie-similar-container">
       <div id="movie-similar-title-div" class="movie-subtitle-container">
         <h3 class="movie-title">Similar movies</h3>
       </div>
+        <mat-grid-list cols="6" rowHeight="150px" gutterSize="10px" class="grid-overflow">
+          <mat-grid-tile *ngFor="let similarTile of similarMoviesTiles | async"
+                         [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="similarTile.color">
+            <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}">
+              <h3>{{similarTile.text}}</h3>
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
     </div>
   </div>
 
@@ -30,6 +54,14 @@
       <div id="movie-recommendations-title-div" class="movie-subtitle-container">
         <h3 class="movie-title">Recommended</h3>
       </div>
+      <mat-grid-list cols="6" rowHeight="150px" gutterSize="10px" class="grid-overflow">
+        <mat-grid-tile *ngFor="let similarTile of similarMoviesTiles | async"
+                       [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="similarTile.color">
+          <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}">
+            <h3>{{similarTile.text}}</h3>
+          </a>
+        </mat-grid-tile>
+      </mat-grid-list>
     </div>
   </div>
 </mat-card>

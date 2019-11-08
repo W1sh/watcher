@@ -1,5 +1,9 @@
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
 mat-card {
-  height: 100%;
+  height: fit-content;
 }
 .flex-div {
   display: flex;
@@ -32,12 +36,15 @@ mat-card {
   display: flex;
   margin-bottom: 2%;
 }
-.movie-similar-container, .movie-recommendations-container {
-  display: flex;
+.movie-similar-container, .movie-recommendations-container,
+.movie-images-container {
+  display: grid;
   width: 100%;
   background: lightblue;
 }
 .movie-subtitle-container {
   width: 100%;
-  margin-bottom: 2%;
+}
+.grid-overflow{
+  margin: 2%;
 }

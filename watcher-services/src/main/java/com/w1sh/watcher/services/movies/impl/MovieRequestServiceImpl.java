@@ -2,6 +2,7 @@ package com.w1sh.watcher.services.movies.impl;
 
 import com.w1sh.watcher.Indexation;
 import com.w1sh.watcher.clients.MovieClient;
+import com.w1sh.watcher.clients.common.RequestParameter;
 import com.w1sh.watcher.dtos.MovieDTO;
 import com.w1sh.watcher.dtos.QueryParamsDTO;
 import com.w1sh.watcher.services.movies.MovieRequestService;
@@ -18,7 +19,8 @@ public class MovieRequestServiceImpl implements MovieRequestService {
 
     @Override
     public MovieDTO find(Integer id) {
-        return movieClient.findById(id).orElseThrow();
+        RequestParameter parameter = new RequestParameter("append_to_response", "images,recommendations,similar");
+        return movieClient.findById(id, parameter).orElseThrow();
     }
 
     @Override
