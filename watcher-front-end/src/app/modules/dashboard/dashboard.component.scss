@@ -37,3 +37,7 @@
   margin-left: 5px;
   width: 100%;
 }
+a, a:-webkit-any-link {
+  color: black !important;
+  text-decoration: none !important;
+}

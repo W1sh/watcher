@@ -10,10 +10,11 @@
 </form>
 
 <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
-  <mat-grid-tile (click)="showDetails(tile)" *ngFor="let tile of filteredSortedTiles | async"
-                 [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
-    <div class="tile-content">
-      {{tile.text}}
-    </div>
+  <mat-grid-tile *ngFor="let tile of filteredSortedTiles | async"
+                 [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"
+                 [class.selected] = "tile === selectedTile">
+    <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: tile.id}">
+      <h3>{{tile.text}}</h3>
+    </a>
   </mat-grid-tile>
 </mat-grid-list>

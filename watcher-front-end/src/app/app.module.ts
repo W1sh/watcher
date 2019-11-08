@@ -31,6 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { RegisterComponent } from './modules/register/register.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { MovieDetailComponent } from './modules/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,

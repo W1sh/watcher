@@ -1,0 +1,10 @@
+<div *ngIf="tile">
+
+  <h2>{{tile.text | uppercase}} Details</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="tile.text" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
