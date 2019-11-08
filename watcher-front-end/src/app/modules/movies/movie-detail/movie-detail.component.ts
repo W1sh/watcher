@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tile} from '../../shared/models/tile';
+import {Tile} from '../../../shared/models/tile';
 import {Router} from '@angular/router';
 
 @Component({

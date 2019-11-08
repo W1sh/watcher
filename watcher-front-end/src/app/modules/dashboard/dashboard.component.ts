@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {MOVIES} from '../../core/mocks/mock.movies';
 import {Movie} from '../../shared/models/movie';
+import {isNumber} from 'util';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,8 +33,7 @@ export class DashboardComponent implements OnInit {
 
   filter() {
     this.filteredSortedTiles = this.filteredSortedTiles.pipe(
-      map(tiles => tiles.filter(tile => tile.text.toLowerCase().includes(this.search)))
-    );
+      map(tiles => tiles.filter(tile => tile.text.toLowerCase().includes(this.search.toLowerCase()))));
   }
 }
 

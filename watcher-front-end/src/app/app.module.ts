@@ -14,8 +14,7 @@ import { NavigationComponent } from './modules/navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { HomeComponent } from './modules/home/home.component';
-import { MoviesComponent } from './modules/movies/movies.component';
+import { MoviesComponent } from './modules/movies/movies/movies.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,18 +25,19 @@ import {MovieService} from './core/services/movie/movie.service';
 import {HttpClientModule} from '@angular/common/http';
 import {EventEmitterService} from './core/services/event-emitter/event-emitter.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { LoginComponent } from './modules/login/login.component';
+import { LoginComponent } from './modules/auth/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { RegisterComponent } from './modules/register/register.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { MovieDetailComponent } from './modules/movie-detail/movie-detail.component';
+import { MovieDetailComponent } from './modules/movies/movie-detail/movie-detail.component';
+import { MoviesModule } from './modules/movies/movies.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    HomeComponent,
     MoviesComponent,
     CloseMenuDirective,
     LoginComponent,
@@ -67,7 +67,9 @@ import { MovieDetailComponent } from './modules/movie-detail/movie-detail.compon
     MatCheckboxModule,
     FormsModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MoviesModule,
+    AuthModule
   ],
   providers: [
     MovieService,

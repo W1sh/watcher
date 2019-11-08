@@ -2,9 +2,9 @@ import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
-import {Movie} from '../../shared/models/movie';
-import {MovieService} from '../../core/services/movie/movie.service';
-import {EventEmitterService} from '../../core/services/event-emitter/event-emitter.service';
+import {Movie} from '../../../shared/models/movie';
+import {MovieService} from '../../../core/services/movie/movie.service';
+import {EventEmitterService} from '../../../core/services/event-emitter/event-emitter.service';
 import {Subscription} from 'rxjs';
 import {SelectionModel} from '@angular/cdk/collections';
 
