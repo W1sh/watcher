@@ -1,10 +1,35 @@
-<div *ngIf="tile">
+<mat-card>
+  <div class="mat-elevation-z8">
+    <div id="movie-container-div" class="movie-container" *ngIf="tile">
+      <div id="movie-title-div" class="movie-title-container">
+        <h2 class="movie-title">{{tile.text | uppercase}} Details ()</h2>
+      </div>
 
-  <h2>{{tile.text | uppercase}} Details</h2>
-  <div>
-    <label>name:
-      <input [(ngModel)]="tile.text" placeholder="name"/>
-    </label>
+      <div id="movie-details-container-div" class="movie-details-container">
+        <div id="movie-poster-div" class="movie-poster-container">
+
+        </div>
+        <div id="movie-info-div" class="movie-info-container">
+          <label>name:
+            <input [(ngModel)]="tile.text" placeholder="name"/>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mat-elevation-z8 flex-div">
+    <div id="movie-similar-div" class="movie-similar-container">
+      <div id="movie-similar-title-div" class="movie-subtitle-container">
+        <h3 class="movie-title">Similar movies</h3>
+      </div>
+    </div>
   </div>
 
-</div>
+  <div class="mat-elevation-z8 flex-div">
+    <div id="movie-recommendations-div" class="movie-recommendations-container">
+      <div id="movie-recommendations-title-div" class="movie-subtitle-container">
+        <h3 class="movie-title">Recommended</h3>
+      </div>
+    </div>
+  </div>
+</mat-card>

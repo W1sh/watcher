@@ -1,1 +1,43 @@
-
+mat-card {
+  height: 100%;
+}
+.flex-div {
+  display: flex;
+  margin-bottom: 2%;
+}
+.movie-container {
+  margin-bottom: 2%;
+  width: 100%;
+  display: grid;
+}
+.movie-title-container {
+  width: 100%;
+  background: lightblue;
+  margin-bottom: 2%;
+}
+.movie-title {
+  width: 100%;
+  margin-left: 2%;
+}
+.movie-poster-container {
+  width: 38%;
+  background: lightblue;
+  margin-right: 2%;
+}
+.movie-info-container {
+  width: 100%;
+  background: lightblue;
+}
+.movie-details-container {
+  display: flex;
+  margin-bottom: 2%;
+}
+.movie-similar-container, .movie-recommendations-container {
+  display: flex;
+  width: 100%;
+  background: lightblue;
+}
+.movie-subtitle-container {
+  width: 100%;
+  margin-bottom: 2%;
+}
