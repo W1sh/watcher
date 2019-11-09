@@ -11,10 +11,11 @@
 
 <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
   <mat-grid-tile *ngFor="let tile of filteredSortedTiles | async"
-                 [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color"
+                 [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="'url('+(tile.color)+')'"
                  [class.selected] = "tile === selectedTile">
-    <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: tile.id}">
+    <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: tile.id}"></a>
+    <mat-grid-tile-footer>
       <h3>{{tile.text}}</h3>
-    </a>
+    </mat-grid-tile-footer>
   </mat-grid-tile>
 </mat-grid-list>

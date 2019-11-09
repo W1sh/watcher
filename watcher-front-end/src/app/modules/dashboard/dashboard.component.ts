@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import {MOVIES} from '../../core/mocks/mock.movies';
 import {Movie} from '../../shared/models/movie';
 import {isNumber} from 'util';
+import {MovieService} from "../../core/services/movie/movie.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -16,17 +17,19 @@ export class DashboardComponent implements OnInit {
   filteredSortedTiles: Observable<Tile[]>;
   selectedTile: Tile;
 
-  constructor() {
-    this.filteredSortedTiles = of(this.moviesToTiles(MOVIES));
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit() {
+    this.filteredSortedTiles = this.movieService.getSavedMovies().pipe(
+      map(movies => this.moviesToTiles(movies))
+    );
     console.log(this.filteredSortedTiles);
   }
-
-  ngOnInit() {}
 
   moviesToTiles(movies: Movie[]): Tile[] {
     const movieTiles: Tile[] = [];
     movies.forEach((movie) => {
-      movieTiles.push({id: movie.id, text: movie.original_title, cols: 1, rows: 1, color: 'lightblue'});
+      movieTiles.push({id: movie.id, text: movie.original_title, cols: 1, rows: 1, color: movie.poster_path});
     });
     return movieTiles;
   }

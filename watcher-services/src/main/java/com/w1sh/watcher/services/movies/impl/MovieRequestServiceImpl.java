@@ -20,7 +20,11 @@ public class MovieRequestServiceImpl implements MovieRequestService {
     @Override
     public MovieDTO find(Integer id) {
         RequestParameter parameter = new RequestParameter("append_to_response", "recommendations,similar");
-        return movieClient.findById(id, parameter).orElseThrow();
+        return movieClient.findById(id, parameter)
+                .stream()
+                .peek(movie -> movie.setPosterPath("https://image.tmdb.org/t/p/w780" + movie.getPosterPath()))
+                .findAny()
+                .orElseThrow();
     }
 
     @Override

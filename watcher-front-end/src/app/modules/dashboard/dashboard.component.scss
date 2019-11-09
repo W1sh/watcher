@@ -1,10 +1,13 @@
 .mat-grid-list {
   margin: 2%;
 }
-
 .mat-grid-tile {
   margin-right: 2%;
-
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+.mat-grid-tile-footer {
+  justify-content: center;
 }
 .tile-content {
   display: flex;
@@ -36,8 +39,4 @@
 .search-input-field {
   margin-left: 5px;
   width: 100%;
-}
-a, a:-webkit-any-link {
-  color: black !important;
-  text-decoration: none !important;
 }

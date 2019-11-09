@@ -17,6 +17,7 @@ export class MovieService {
 
   private saveMovies = 'http://localhost:8080/movies';
   private searchMovies = 'http://localhost:8080/search/movies';
+  private searchSingleMovies= 'http://localhost:8080/search/movies/single/';
   private searchPopularMovies = 'http://localhost:8080/search/movies/popular';
   private searchUpcomingMovies = 'http://localhost:8080/search/movies/upcoming';
   private searchTopRatedMovies = 'http://localhost:8080/search/movies/toprated';
@@ -28,6 +29,25 @@ export class MovieService {
     return this.http.post<Movie>(this.saveMovies, movies, httpOptions)
       .pipe(
         catchError(this.handleError('save'))
+      );
+  }
+
+  getSavedMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.saveMovies, {})
+      .pipe(
+        tap(_ => console.log('fetched movies', _)),
+        catchError(this.handleError<Movie[]>('getSavedMovies', []))
+      );
+  }
+
+  getSingleMovie(id: number): Observable<Movie> {
+    let params = new HttpParams();
+    params = params.append('search', 'marvel');
+
+    return this.http.get<Movie>(this.searchSingleMovies + id, {params})
+      .pipe(
+        tap(_ => console.log('fetched movies', _)),
+        catchError(this.handleError<Movie>('getSingleMovie'))
       );
   }
 

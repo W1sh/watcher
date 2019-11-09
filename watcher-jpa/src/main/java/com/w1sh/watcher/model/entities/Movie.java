@@ -30,6 +30,9 @@ public class Movie {
     @Column(name = "RUNTIME")
     private Integer runtime;
 
+    @Column(name = "POSTER_PATH")
+    private String posterPath;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "movie_genre",
             joinColumns = @JoinColumn(name = "movie_id"),
