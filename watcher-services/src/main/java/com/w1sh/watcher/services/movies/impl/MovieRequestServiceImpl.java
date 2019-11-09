@@ -19,7 +19,7 @@ public class MovieRequestServiceImpl implements MovieRequestService {
 
     @Override
     public MovieDTO find(Integer id) {
-        RequestParameter parameter = new RequestParameter("append_to_response", "images,recommendations,similar");
+        RequestParameter parameter = new RequestParameter("append_to_response", "recommendations,similar");
         return movieClient.findById(id, parameter).orElseThrow();
     }
 
