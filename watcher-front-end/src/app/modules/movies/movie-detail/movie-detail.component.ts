@@ -21,11 +21,8 @@ export class MovieDetailComponent implements OnInit {
   ]);
 
   constructor(private router: Router, private movieService: MovieService) {
-    this.tile = {id: 0, text: '', cols: 1, rows: 1, color: ''};
-    this.tile.id = router.getCurrentNavigation().extras.state.id;
-    console.log(this.tile.id);
-    this.movieService.getSingleMovie(21345).subscribe(movie => {
-      console.log(movie);
+    this.movieService.getSingleMovie(router.getCurrentNavigation().extras.state.id).subscribe(movie => {
+      this.tile = {id: movie.id, text: movie.original_title, cols: 1, rows: 1, color: movie.poster_path}
     });
   }
 

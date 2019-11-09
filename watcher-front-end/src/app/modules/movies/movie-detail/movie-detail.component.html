@@ -2,12 +2,16 @@
   <div class="mat-elevation-z8">
     <div id="movie-container-div" class="movie-container" *ngIf="tile">
       <div id="movie-title-div" class="movie-title-container">
-        <h2 class="movie-title">{{tile.text | uppercase}} Details ()</h2>
+        <h2 class="movie-title">{{tile.text}} ()</h2>
+        <div class="movie-collection-status-container">
+          <mat-icon title="Add to your collection">add</mat-icon>
+          <h4>Add to your collection</h4>
+        </div>
       </div>
 
       <div id="movie-details-container-div" class="movie-details-container">
         <div id="movie-poster-div" class="movie-poster-container">
-
+          <img class="movie-poster" src="{{tile.color}}" alt="Movie poster"/>
         </div>
         <div id="movie-info-div" class="movie-info-container">
           <label>name:
@@ -25,9 +29,10 @@
       <mat-grid-list cols="6" rowHeight="150px" gutterSize="10px" class="grid-overflow">
         <mat-grid-tile *ngFor="let similarTile of similarMoviesTiles | async"
                        [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="similarTile.color">
-          <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}">
-            <h3>{{similarTile.text}}</h3>
-          </a>
+          <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}"></a>
+          <mat-grid-tile-footer>
+            <h3>{{tile.text}}</h3>
+          </mat-grid-tile-footer>
         </mat-grid-tile>
       </mat-grid-list>
     </div>
@@ -40,10 +45,11 @@
       </div>
         <mat-grid-list cols="6" rowHeight="150px" gutterSize="10px" class="grid-overflow">
           <mat-grid-tile *ngFor="let similarTile of similarMoviesTiles | async"
-                         [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="similarTile.color">
-            <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}">
-              <h3>{{similarTile.text}}</h3>
-            </a>
+                         [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="'url('+(similarTile.color)+')'">
+            <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}"></a>
+            <mat-grid-tile-footer>
+              <h3>{{tile.text}}</h3>
+            </mat-grid-tile-footer>
           </mat-grid-tile>
         </mat-grid-list>
     </div>
@@ -56,10 +62,11 @@
       </div>
       <mat-grid-list cols="6" rowHeight="150px" gutterSize="10px" class="grid-overflow">
         <mat-grid-tile *ngFor="let similarTile of similarMoviesTiles | async"
-                       [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="similarTile.color">
-          <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}">
-            <h3>{{similarTile.text}}</h3>
-          </a>
+                       [colspan]="similarTile.cols" [rowspan]="similarTile.rows" [style.background]="'url('+(similarTile.color)+')'">
+          <a class="tile-content" [routerLink]="['/movies/details']" [state]="{id: similarTile.id}"></a>
+          <mat-grid-tile-footer>
+            <h3>{{tile.text}}</h3>
+          </mat-grid-tile-footer>
         </mat-grid-tile>
       </mat-grid-list>
     </div>
